@@ -19,51 +19,9 @@
 
 <main role="main">
 
-    <section class="panel important">
-        <h2>Welcome to Your Dashboard </h2>
-        <ul>
-            <li>Important panel that will always be really wide Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-            <li>Aliquam tincidunt mauris eu risus.</li>
-            <li>Vestibulum auctor dapibus neque.</li>
-        </ul>
-    </section>
 
-
-
-    <section class="panel important">
-        <h2>Log Statistics</h2>
-        {{ print_r(\App\Http\Controllers\AdminController::log_statistics_overview())  }}
-        <table>
-            <tr>
-                <th>Host</th>
-                <th>Total</th>
-                <th>Info</th>
-                <th>Debug</th>
-                <th>Notice</th>
-                <th>Warning</th>
-                <th>Error</th>
-            </tr>
-            <tr>
-                <td>Pete</td>
-                <td>4</td>
-                <td>7</td>
-                <td>Oct 10, 2015</td>
-                <td>Oct 10, 2015</td>
-                <td>Oct 10, 2015</td>
-                <td>Oct 10, 2015</td>
-
-            </tr>
-            <tr>
-                <td>Mary</td>
-                <td>5769</td>
-                <td>2517</td>
-                <td>Jan 1, 2014</td>
-                <td>Jan 1, 2014</td>
-                <td>Jan 1, 2014</td>
-                <td>Jan 1, 2014</td>
-            </tr>
-        </table>
-    </section>
+    @include('admin.components.messages')
+    @include('admin.components.log_statistics')
 
     <section class="panel">
         <h2>Posts</h2>
@@ -127,18 +85,6 @@
     </section>
 
 
-    <section class="panel">
-        <h2>feedback</h2>
-        <div class="feedback">This is neutral feedback Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, praesentium. Libero perspiciatis quis aliquid iste quam dignissimos, accusamus temporibus ullam voluptatum, tempora pariatur, similique molestias blanditiis at sunt earum neque.</div>
-        <div class="feedback error">This is warning feedback
-            <ul>
-                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                <li>Aliquam tincidunt mauris eu risus.</li>
-                <li>Vestibulum auctor dapibus neque.</li>
-            </ul>  </div>
-        <div class="feedback success">This is positive feedback</div>
-
-    </section>
 
 
 

@@ -33,6 +33,7 @@ class AdminController extends Controller {
                 '.DEBUG' => 0,
                 '.WARNING' => 0,
                 '.ERROR' => 0,
+                '.TOTAL' => 0,
             ];
             $log_path = $host_out[0];
 
@@ -48,6 +49,7 @@ class AdminController extends Controller {
                     }
                 }
             }
+            $log_levels['.TOTAL'] = array_sum(array_values($log_levels));
             $hosts[$host] = $log_levels;
         }
         return $hosts;
