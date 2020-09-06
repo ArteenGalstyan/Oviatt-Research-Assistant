@@ -2,9 +2,6 @@
     <h2>Please Login</h2>
     <form action="#">
         <div class="onethird">
-            {{
-            \Illuminate\Support\Facades\DB::select()->whereIn
-            }}
             <label>Username:</label>
             <input type="text" placeholder="Enter Username" name="username" required>
             <label>Password:</label>
