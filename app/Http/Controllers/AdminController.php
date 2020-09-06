@@ -18,10 +18,10 @@ class AdminController extends Controller {
 
         $hosts = [
             'prod'   => ['/var/www' . self::LOG_PATH, null],
-            'dev'    => ['/home/dev' . self::LOG_PATH, null],
-            'nick'   => ['/home/nick' . self::LOG_PATH, null],
-            'arteen' => ['/home/arteen' . self::LOG_PATH, null],
-            'tyler'  => ['/home/tyler' . self::LOG_PATH, null]
+            'dev'    => ['/dashboard/dev' . self::LOG_PATH, null],
+            'nick'   => ['/dashboard/nick' . self::LOG_PATH, null],
+            'arteen' => ['/dashboard/arteen' . self::LOG_PATH, null],
+            'tyler'  => ['/dashboard/tyler' . self::LOG_PATH, null]
         ];
 
 
