@@ -55,4 +55,8 @@ class AdminController extends Controller {
         return $hosts;
     }
 
+    public static function get_messages($level) {
+        return ['Example message. Later form a SQL query against admin_messages'];
+    }
+
 }

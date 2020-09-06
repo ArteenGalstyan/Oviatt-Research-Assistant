@@ -1,12 +1,12 @@
 <section class="panel important">
-    <h2>feedback</h2>
-    <div class="feedback">This is neutral feedback Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, praesentium. Libero perspiciatis quis aliquid iste quam dignissimos, accusamus temporibus ullam voluptatum, tempora pariatur, similique molestias blanditiis at sunt earum neque.</div>
-    <div class="feedback error">This is warning feedback
-        <ul>
-            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-            <li>Aliquam tincidunt mauris eu risus.</li>
-            <li>Vestibulum auctor dapibus neque.</li>
-        </ul>  </div>
-    <div class="feedback success">This is positive feedback</div>
-
+    <h2>Messages</h2>
+    @foreach(AdminController::get_messages('positive') as $message)
+        <div class="feedback success">{{$message}}</div>
+    @endforeach
+    @foreach(AdminController::get_messages('neutral') as $message)
+        <div class="feedback">{{$message}}</div>
+    @endforeach
+    @foreach(AdminController::get_messages('warning') as $message)
+        <div class="feedback error">{{$message}}</div>
+    @endforeach
 </section>
