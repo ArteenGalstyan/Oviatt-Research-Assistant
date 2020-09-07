@@ -11,14 +11,11 @@ class LoginController extends Controller {
         if (Auth::attempt($request->only('username', 'password'))) {
             return redirect('/admin');
         }
-        else {
-            Log::debug("Failed login");
-            return redirect('/');
-        }
+        Log::debug("Failed login");
+        return redirect('/');
     }
 
     public function logout(Request $request) {
-
         if (Auth::user()) {
             Auth::logout();
         }

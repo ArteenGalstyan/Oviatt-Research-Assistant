@@ -10,8 +10,11 @@ class AdminController extends Controller {
     const LOG_PATH = '/oa/storage/logs';
 
     public function home() {
-        Log::debug("Hi");
-        return view('admin.admin_home');
+        return view('admin.admin_home', ['page' => 'home']);
+    }
+
+    public function logs() {
+        return view('admin.admin_home', ['page' => 'logs']);
     }
 
     public static function log_statistics_overview() {

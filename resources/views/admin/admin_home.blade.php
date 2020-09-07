@@ -2,9 +2,15 @@
 @include('admin.components.navigation')
 <main role="main">
 
-    @if(Auth::user())
-        @include('admin.components.dashboard.messages')
-        @include('admin.components.dashboard.log_statistics')
+    @if(Auth::user() && Auth::user()->admin)
+
+        @switch($page)
+            @case('home')
+                @include('admin.components.dashboard.messages')
+                @include('admin.components.dashboard.log_statistics')
+            @case('logs')
+                <p>Hi</p>
+        @endswitch
     @else
         @include('admin.components.login')
     @endif

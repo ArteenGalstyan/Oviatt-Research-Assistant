@@ -1,3 +1,4 @@
+{{
 <link rel="stylesheet" href="css/admin/main.css">
 <header role="banner">
     <h1>Admin Panel</h1>
