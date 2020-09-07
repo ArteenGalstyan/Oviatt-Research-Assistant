@@ -18,6 +18,12 @@ class LoginController extends Controller {
     public function logout(Request $request) {
         if (Auth::user()) {
             Auth::logout();
+            if (strpos(Redirect::back(), 'admin') !== false) {
+                return redirect('/admin');
+            }
+            else {
+                return Redirect::back();
+            }
         }
         return Redirect::back();
     }

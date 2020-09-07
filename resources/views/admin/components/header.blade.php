@@ -1,5 +1,6 @@
-{{
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="css/admin/main.css">
+<script src="js/api.js"></script>
 <header role="banner">
     <h1>Admin Panel</h1>
     <ul class="utilities">

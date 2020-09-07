@@ -3,18 +3,23 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller {
 
     const LOG_PATH = '/oa/storage/logs';
 
     public function home() {
+        if (Request::has('page')) {
+            switch (Request::get('page')) {
+                case 'logs':
+                    return view('admin.admin_home', ['page' => Request::get('page')]);
+                default:
+                    return view('admin.admin_home', ['page' => 'home']);
+            }
+        }
         return view('admin.admin_home', ['page' => 'home']);
-    }
-
-    public function logs() {
-        return view('admin.admin_home', ['page' => 'logs']);
     }
 
     public static function log_statistics_overview() {
@@ -56,6 +61,36 @@ class AdminController extends Controller {
             $hosts[$host] = $log_levels;
         }
         return $hosts;
+    }
+
+    public static function get_logs() {
+        if (!Auth::user()->admin) {
+            http_response_code(401);
+            return 'Not authorized';
+        }
+        if (!Request::has('host')) {
+            http_response_code(400);
+            return 'Please specify host';
+        }
+        $hosts = [
+            'prod'   => '/var/www' . self::LOG_PATH,
+            'dev'    => '/home/dev' . self::LOG_PATH,
+            'nick'   => '/home/nick' . self::LOG_PATH,
+            'arteen' => '/home/arteen' . self::LOG_PATH,
+            'tyler'  => '/home/tyler' . self::LOG_PATH,
+        ];
+        if (!in_array(Request::get('host'), array_keys($hosts))) {
+            http_response_code(400);
+            return 'Invalid host';
+        }
+        if ($log_files = scandir($hosts[Request::get('host')])) {
+            foreach ($log_files as $log_file) {
+                $handle = fopen($hosts[Request::get('host')] . '/' . $log_file, 'r');
+                while (($line = fgets($handle)) !== false) {
+                    echo $line;
+                }
+            }
+        }
     }
 
     public static function get_messages($level) {
