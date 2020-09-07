@@ -4,7 +4,7 @@
     <ul class="utilities">
         @if(Auth::user())
             <li class="users"><a href="#">My Account</a></li>
-            <li class="logout warn"><a href="">Log Out</a></li>
+            <li class="logout warn"><a href="/logout">Log Out</a></li>
         @endif
     </ul>
 </header>
