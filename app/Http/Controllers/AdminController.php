@@ -11,7 +11,11 @@ class AdminController extends Controller {
 
     const LOG_PATH = '/oa/storage/logs';
 
+    /**
+     * Admin panel endpoint. Builds blade template based on supplied 'page' parameter
+     */
     public function home() {
+
         if (Request::has('page')) {
             switch (Request::get('page')) {
                 case 'logs':
@@ -23,6 +27,11 @@ class AdminController extends Controller {
         return view('admin.admin_home', ['page' => 'home']);
     }
 
+    /**
+     * Generates a line count (total and per level) for each respective
+     * virtual host logfile.
+     * @return array[] - Full of hosts/counts
+     */
     public static function log_statistics_overview() {
 
         $hosts = [
@@ -32,7 +41,6 @@ class AdminController extends Controller {
             'arteen' => ['/home/arteen' . self::LOG_PATH, null],
             'tyler'  => ['/home/tyler' . self::LOG_PATH, null]
         ];
-
 
         foreach ($hosts as $host => $host_out) {
 
@@ -64,6 +72,11 @@ class AdminController extends Controller {
         return $hosts;
     }
 
+
+    /**
+     * Returns the actual contents of the specified hosts logfile
+     * @return string
+     */
     public static function get_logs() {
         if (!Auth::user()->admin) {
             http_response_code(401);
@@ -94,6 +107,11 @@ class AdminController extends Controller {
         }
     }
 
+    /**
+     * Returns unread messages in the admin_message table
+     * @param $level - Message level to retrieve
+     * @return array - Array of message strings
+     */
     public static function get_unread_messages($level) {
         $res = DB::table('admin_messages')
             ->where('level', $level)

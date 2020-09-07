@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller {
 
+    /**
+     * Attempt to login with the supplied username/password combo. Redirect to
+     * admin on success for now (only admins are users currently, this will probably change)
+     * @param Request $request
+     */
     public function login(Request $request) {
         if (Auth::attempt($request->only('username', 'password'))) {
             return redirect('/admin');
@@ -15,6 +20,10 @@ class LoginController extends Controller {
         return redirect('/');
     }
 
+    /**
+     * Logs the user out if they are logged in. Redirects to /admin on successful logout
+     * @param Request $request
+     */
     public function logout(Request $request) {
         if (Auth::user()) {
             Auth::logout();
