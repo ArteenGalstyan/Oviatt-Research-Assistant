@@ -19,6 +19,7 @@
             lv.innerHTML = response;
         }, () => {});
     }
+    getLogs();
 </script>
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller {
 
@@ -93,8 +94,19 @@ class AdminController extends Controller {
         }
     }
 
-    public static function get_messages($level) {
-        return ['Example message. Later form a SQL query against admin_messages'];
+    public static function get_unread_messages($level) {
+        $res = DB::table('admin_messages')
+            ->where('level', $level)
+            ->where('read', 'N')
+            ->get()
+            ->toArray();
+        $out = [];
+        if (count($res)) {
+            foreach ($res as $row) {
+                array_push($out, $row->message);
+            }
+        }
+        return $out;
     }
 
 }

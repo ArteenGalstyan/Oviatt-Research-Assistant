@@ -5,7 +5,7 @@
     <h1>Admin Panel</h1>
     <ul class="utilities">
         @if(Auth::user())
-            <li class="users"><a href="#">My Account</a></li>
+            <li class="users"><a href="#">Welcome {{Auth::user()->username}}</a></li>
             <li class="logout warn"><a href="/logout">Log Out</a></li>
         @endif
     </ul>
