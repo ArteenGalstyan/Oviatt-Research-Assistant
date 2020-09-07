@@ -78,7 +78,7 @@ class AdminController extends Controller {
      * @return string
      */
     public static function get_logs() {
-        if (!Auth::user()->admin) {
+        if (!(Auth::user() && Auth::user()->admin)) {
             http_response_code(401);
             return 'Not authorized';
         }
