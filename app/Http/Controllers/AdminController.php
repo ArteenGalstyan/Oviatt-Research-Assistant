@@ -97,13 +97,18 @@ class AdminController extends Controller {
             http_response_code(400);
             return 'Invalid host';
         }
+        $log_lines = [];
         if ($log_files = scandir($hosts[Request::get('host')])) {
             foreach ($log_files as $log_file) {
                 $handle = fopen($hosts[Request::get('host')] . '/' . $log_file, 'r');
                 while (($line = fgets($handle)) !== false) {
-                    echo $line;
+                    array_push($log_lines, $line);
                 }
             }
+        }
+        $log_lines = array_reverse($log_lines);
+        foreach ($log_lines as $line) {
+            echo $line;
         }
     }
 
