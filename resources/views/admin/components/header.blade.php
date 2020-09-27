@@ -1,5 +1,6 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="stylesheet" href="css/admin/main.css">
+<link rel="stylesheet" href="css/admin/admin_main.css">
+<script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/api.js"></script>
 <header role="banner">
     <h1>Admin Panel</h1>

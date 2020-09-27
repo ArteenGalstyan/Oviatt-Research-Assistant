@@ -206,7 +206,11 @@ form label, form legend {
     display: block;
     margin: 1em 0 .5em;
 }
-form input[type=submit] {
+#error-span {
+    color: red;
+}
+
+#submit {
     background: turquoise;
     border: none;
     border-bottom: solid 4px #21ccbb;
@@ -223,7 +227,7 @@ form input[type=submit] {
     -ms-border-radius: .5em;
     border-radius: .5em;
 }
-form input[type=submit]:hover {
+#submit:hover {
     background: khaki;
     border: none;
     border-bottom: solid 4px #eadc5f;

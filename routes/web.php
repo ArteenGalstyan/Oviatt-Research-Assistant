@@ -13,13 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* Admin GET Routes */
 Route::get('/', function () {return view('welcome');});
 Route::get('/admin', 'AdminController@home');
 Route::get('/admin/logs', 'AdminController@logs');
 
+/* Admin POST Routes */
 Route::post('/get_logs', 'AdminController@get_logs');
 
-Route::post('/login', 'LoginController@login');
+/* General GET Routes */
 Route::get('/logout', 'LoginController@logout');
+
+/* General POST Routes */
+Route::post('/login', 'LoginController@login');
+Route::post('/register', 'RegistrationController@register');
 
 
