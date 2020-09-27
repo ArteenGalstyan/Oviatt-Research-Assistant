@@ -19,6 +19,8 @@ Route::get('/admin/logs', 'AdminController@logs');
 
 Route::post('/get_logs', 'AdminController@get_logs');
 
+Route::get('/login', 'LoginController@login_blade');
+
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
 

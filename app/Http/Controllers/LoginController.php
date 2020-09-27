@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller {
 
+
+    public function login_blade() {
+        return view('login');
+
+    }
+
     /**
      * Attempt to login with the supplied username/password combo. Redirect to
      * admin on success for now (only admins are users currently, this will probably change)
