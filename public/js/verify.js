@@ -29,6 +29,10 @@ function success() {
     icon.addClass('fa-check');
 
     text.html("Email was successfully verified!");
+
+    setTimeout(() => {
+        window.location.href = window.location.origin;
+    }, 2000);
 }
 
 function failed(reason = null) {
@@ -42,4 +46,8 @@ function failed(reason = null) {
         reason ? JSON.parse(reason).reason
         : "Invalid email or token supplied"
     );
+
+    setTimeout(() => {
+        window.location.href = window.location.origin;
+    }, 2000);
 }
