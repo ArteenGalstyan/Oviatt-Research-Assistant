@@ -11,8 +11,7 @@ class LoginController extends Controller {
 
 
     public function login_blade() {
-        return view('login');
-
+        return view('static.login');
     }
 
     /**
@@ -36,7 +35,7 @@ class LoginController extends Controller {
     }
 
     /**
-     * Logs the user out if they are logged in. Redirects to /admin on successful logout
+     * Logs the user out if they are logged in. Redirects to back URL on successful logout
      * @param Request $request
      * @return RedirectResponse - Redirects user to origin URL
      */

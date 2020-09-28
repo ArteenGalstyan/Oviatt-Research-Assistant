@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use DB;
-use mysql_xdevapi\Exception;
+use Log;
 
 class User extends Authenticatable
 {
@@ -77,5 +77,22 @@ class User extends Authenticatable
         DB::table(self::TABLE_NAME)->orderBy('id', 'desc')
             ->limit(1)
             ->delete();
+    }
+
+    public static function verify_user($email, $token)  {
+
+        if (!self::email_exists($email)) {
+            Log::warning("Email supplied to verify_user() does not exist");
+            return false;
+        }
+        $user = User::find(DB::table(self::TABLE_NAME)->where('email', $email)->first()->id);
+        if ($user->verify_token !== $token) {
+            Log::warning("Token supplied to verify_user() does not match");
+            return false;
+        }
+
+        $user->verified = '1';
+        $user->save();
+        return true;
     }
 }

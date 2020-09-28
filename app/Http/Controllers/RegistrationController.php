@@ -15,7 +15,7 @@ class RegistrationController extends Controller {
             Request::has('password') &&
             Request::has('email'))) {
 
-            Log::error("Request did not supply username/password/or email");
+            Log::error("Request to register() did not supply username/password/or email");
             return $this->api_response('Missing username/password or email', 400);
         }
 
@@ -49,6 +49,25 @@ class RegistrationController extends Controller {
         return $this->api_response('Successfully registered user', 200);
     }
 
+    public function verify_email() {
+
+        if (!(Request::has('email') && Request::has('token'))) {
+
+            Log::error("Request to verify_email() did not supply token or email");
+            return $this->api_response('Missing token or email', 400);
+        }
+        if (!User::verify_user(Request::get('email'), Request::get('token'))) {
+            Log::error("Couldn't verify user with email: " . Request::get('email'));
+            return $this->api_response("Couldn't verify user", 400);
+        }
+
+        return $this->api_response("Successfully verified user", 200);
+    }
+
+    public function verify_email_blade() {
+        return view('static.verify_email');
+    }
+
     private function fire_email_verification($token, $email) {
         $mailer_key = Environment::get_env('MAILER_KEY');
         $mailer_key_header = Environment::get_env('MAILER_KEY_HEADER');
@@ -61,7 +80,7 @@ class RegistrationController extends Controller {
             return false;
         }
 
-        $callback = "https://oviattassistant.com/verify_email?token=";
+        $callback = "https://oviattassistant.com/verify_email?";
         $endpoint = "https://api.xdmtk.org/mailer/index.php?";
         $url_request = $endpoint .
             "to=" . $email .

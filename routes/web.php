@@ -24,8 +24,9 @@ Route::post('/get_logs', 'AdminController@get_logs');
 /* General GET Routes */
 Route::get('/login', 'LoginController@login_blade');
 Route::get('/logout', 'LoginController@logout');
+Route::get('/verify_email', 'RegistrationController@verify_email_blade');
 
 /* General POST Routes */
 Route::post('/login', 'LoginController@login');
 Route::post('/register', 'RegistrationController@register');
-
+Route::post('/verify_email', 'RegistrationController@verify_email');
