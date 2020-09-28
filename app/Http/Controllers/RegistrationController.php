@@ -18,7 +18,17 @@ class RegistrationController extends Controller {
         if (User::user_exists(Request::get('username'))) {
             return $this->api_response('Username already exists!', 400);
         }
+        if (User::email_exists(Request::get('email'))) {
+            return $this->api_response('Email already exists!', 400);
+        }
+
+        $verify_token = User::create_user([
+            'username' => Request::get('username'),
+            'password' => Request::get('password'),
+            'email' => Request::get('email'),
+        ]);
 
 
     }
+
 }
