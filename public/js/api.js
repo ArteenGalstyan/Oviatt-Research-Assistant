@@ -5,7 +5,7 @@
  * @param success
  * @param error
  */
-function post(endpoint, params, success, error) {
+function post(endpoint, params, success, error, csrf = true) {
 
     const xhr = new XMLHttpRequest();
     let paramString = ''; let callback = '';
@@ -13,7 +13,9 @@ function post(endpoint, params, success, error) {
     /* Setup POST method XHR object */
     xhr.open("POST", endpoint);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.setRequestHeader('X-CSRF-Token', document.getElementsByTagName('meta')["csrf-token"].content)
+    if (csrf) {
+        xhr.setRequestHeader('X-CSRF-Token', document.getElementsByTagName('meta')["csrf-token"].content)
+    }
     xhr.onreadystatechange = function() {
 
         /* Assign the callback function when the request returns based on HTTP status codes */

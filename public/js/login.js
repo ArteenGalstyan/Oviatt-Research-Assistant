@@ -3,11 +3,42 @@ const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 const autoCompleteHack = document.getElementsByTagName('input');
 
+const registerButton = $('#register');
+const loginButton = $('#login');
+
+function register() {
+    const passwordConfirm = $('#r-password-confirm');
+    const registerErrorSpan = $('#register-error');
+    const elements = {
+        username: $('#r-username'),
+        password: $('#r-password'),
+        email: $('#r-email'),
+    }
+    if (elements.password.val() !== passwordConfirm.val()) {
+        registerErrorSpan.html("Passwords must match!")
+        return;
+    }
+
+    post('/register', {
+        username: elements.username.val(),
+        password: elements.password.val(),
+        email: elements.email.val(),
+    }, () => {
+        alert('Successfully registered user');
+    }, (response) => {
+        registerErrorSpan.html(JSON.parse(response).reason);
+    });
+}
+
+function login() {
+
+}
+
 setTimeout(() => {
     for (let field of autoCompleteHack) {
         field.value = "";
     }
-}, 100);
+}, 800);
 
 signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
@@ -16,6 +47,8 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });
+
+registerButton.on('click', register);
 
 tsParticles.load("particles", {
     fps_limit: 60,

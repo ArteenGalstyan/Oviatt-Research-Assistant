@@ -64,14 +64,16 @@ class RegistrationController extends Controller {
             "&to=" . $email .
             "&token=" . $token .
             "&callback=" . $callback .
-            "&key=" . Environment::get_env('MAILER_KEY');
+            "&key=" . $mailer_key;
 
 
         $curl = curl_init();
         curl_setopt($curl,CURLOPT_URL, $url_request);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-            'API_KEY: ' . Environment::get_env('MAILER_KEY_HEADER'),
+            'API_KEY: ' . $mailer_key_header,
         ));
         curl_exec($curl);
+        Log::info("Firing curl request");
+        return true;
     }
 }

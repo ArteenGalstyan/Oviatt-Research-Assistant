@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="/css/login.css">
 <div id="particles"></div>
 <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
@@ -5,24 +6,28 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="#">
+        <form onsubmit="return false;">
+            @csrf
             <h1>Create Account</h1>
-            <input type="text" autocomplete="" placeholder="Username" />
-            <input type="email" autocomplete="" placeholder="Email" />
-            <input type="password" autocomplete="" placeholder="Password" />
-            <input type="password-confirm" autocomplete="" placeholder="Confirm Password" />
-            <button>Sign Up</button>
+            <input id="r-username" type="text" autocomplete="" placeholder="Username" />
+            <input id="r-email" type="email" autocomplete="" placeholder="Email" />
+            <input id="r-password" type="password" autocomplete="" placeholder="Password" />
+            <input id="r-password-confirm" type="password" autocomplete="" placeholder="Confirm Password" />
+            <span id="register-error"></span>
+            <button id="register">Sign Up</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form onsubmit="return false;">
+            @csrf
             <h1>Sign in</h1>
             <div class="social-container">
             </div>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input id="l-username" type="username" placeholder="Username" />
+            <input id="l-password" type="password" placeholder="Password" />
             <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
+            <span id="login-error"></span>
+            <button id="login" onclick="login()">Sign In</button>
         </form>
     </div>
     <div class="overlay-container">
@@ -40,4 +45,6 @@
         </div>
     </div>
 </div>
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/js/api.js"></script>
 <script src="/js/login.js"></script>

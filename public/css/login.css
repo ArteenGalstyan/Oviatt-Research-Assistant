@@ -112,6 +112,7 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    margin-top: 200px;
 }
 
 .form-container {
@@ -249,4 +250,13 @@ footer {
     right: 0;
     text-align: center;
     z-index: 999;
+}
+
+#login-error {
+    margin: 8px;
+    color: red;
+}
+#register-error {
+    margin: 8px;
+    color: red;
 }
