@@ -28,4 +28,3 @@ Route::get('/logout', 'LoginController@logout');
 Route::post('/login', 'LoginController@login');
 Route::post('/register', 'RegistrationController@register');
 
-

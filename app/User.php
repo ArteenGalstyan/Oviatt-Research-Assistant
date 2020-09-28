@@ -58,14 +58,24 @@ class User extends Authenticatable
             return false;
         }
         $verify_token = uniqid() . uniqid();
-        DB::table(self::TABLE_NAME)->insert([
+        $ret = DB::table(self::TABLE_NAME)->insert([
             'username' => $params['username'],
             'password' => password_hash($params['password'], PASSWORD_DEFAULT),
             'email' => $params['email'],
             'admin' => '0',
             'verify_token' => $verify_token,
+            'verified' => '0',
             'created_at' => date('Y-m-d H:i:s')
         ]);
-        return $verify_token;
+        if ($ret) {
+            return $verify_token;
+        }
+        return false;
+    }
+
+    public static function delete_last_user() {
+        DB::table(self::TABLE_NAME)->orderBy('id', 'desc')
+            ->limit(1)
+            ->delete();
     }
 }
