@@ -3,8 +3,12 @@ const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 const autoCompleteHack = document.getElementsByTagName('input');
 
+const registerForm = $('#register-form');
+const loginForm = $('#login-form');
 const registerButton = $('#register');
 const loginButton = $('#login');
+const regSuccessSpan = $('#register-success-span');
+const regSuccessSubSpan = $('#register-success-subspan');
 
 function register() {
     const passwordConfirm = $('#r-password-confirm');
@@ -24,10 +28,18 @@ function register() {
         password: elements.password.val(),
         email: elements.email.val(),
     }, () => {
-        alert('Successfully registered user');
+        registerSuccessFadeout();
     }, (response) => {
         registerErrorSpan.html(JSON.parse(response).reason);
     });
+}
+
+function registerSuccessFadeout() {
+    registerForm.fadeOut();
+    loginForm.fadeOut();
+    setTimeout(() => {regSuccessSpan.fadeIn();
+    regSuccessSubSpan.fadeIn(); }, 500);
+
 }
 
 function login() {

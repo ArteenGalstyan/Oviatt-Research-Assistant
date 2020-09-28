@@ -6,7 +6,7 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form onsubmit="return false;">
+        <form id="register-form" onsubmit="return false;">
             @csrf
             <h1>Create Account</h1>
             <input id="r-username" type="text" autocomplete="" placeholder="Username" />
@@ -16,9 +16,11 @@
             <span id="register-error"></span>
             <button id="register">Sign Up</button>
         </form>
+        <span id="register-success-span" style="display: none">Success!</span>
+        <span id="register-success-subspan" style="display: none">Check your email for the verification link!</span>
     </div>
     <div class="form-container sign-in-container">
-        <form onsubmit="return false;">
+        <form id="login-form" onsubmit="return false;">
             @csrf
             <h1>Sign in</h1>
             <div class="social-container">
@@ -47,4 +49,4 @@
 </div>
 <script src="/js/jquery-3.5.1.min.js"></script>
 <script src="/js/api.js"></script>
-<script src="/js/login.js"></script>
+<script src="/js/login-register.js"></script>
