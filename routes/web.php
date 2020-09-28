@@ -22,6 +22,7 @@ Route::get('/admin/logs', 'AdminController@logs');
 Route::post('/get_logs', 'AdminController@get_logs');
 
 /* General GET Routes */
+Route::get('/login', 'LoginController@login_blade');
 Route::get('/logout', 'LoginController@logout');
 
 /* General POST Routes */
