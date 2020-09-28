@@ -11,7 +11,7 @@ class Environment {
             $line = explode("=", fgets($env_handle));
             if ($line[self::KEY] == $key) {
                 fclose($env_handle);
-                return $line[trim(self::VALUE)];
+                return trim($line[trim(self::VALUE)]);
             }
         }
         return null;

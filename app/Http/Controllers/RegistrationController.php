@@ -53,6 +53,9 @@ class RegistrationController extends Controller {
         $mailer_key = Environment::get_env('MAILER_KEY');
         $mailer_key_header = Environment::get_env('MAILER_KEY_HEADER');
 
+        Log::debug("Got mailer key: " . $mailer_key);
+        Log::debug("Got mailer key header: " . $mailer_key_header);
+
         if ($mailer_key == null || $mailer_key_header == null) {
             Log::error("Could not get mailer keys from key file!");
             return false;
@@ -61,10 +64,10 @@ class RegistrationController extends Controller {
         $callback = "https://oviattassistant.com/verify_email?token=";
         $endpoint = "https://api.xdmtk.org/mailer/index.php?";
         $url_request = $endpoint .
-            "&to=" . $email .
+            "to=" . $email .
             "&token=" . $token .
-            "&callback=" . $callback .
-            "&key=" . $mailer_key;
+            "&key=" . $mailer_key .
+            "&callback=" . $callback;
 
 
         $curl = curl_init();
@@ -72,8 +75,14 @@ class RegistrationController extends Controller {
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
             'API_KEY: ' . $mailer_key_header,
         ));
-        curl_exec($curl);
-        Log::info("Firing curl request");
+
+
+        Log::info("Firing curl request to endpoint:" . $url_request);
+        if (curl_exec($curl) === false) {
+            Log::error("Curl error: " . curl_error($curl));
+            return false;
+        }
+        Log::info("Curl successful");
         return true;
     }
 }
