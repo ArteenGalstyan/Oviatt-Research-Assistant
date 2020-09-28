@@ -83,12 +83,17 @@ class User extends Authenticatable
 
         if (!self::email_exists($email)) {
             Log::warning("Email supplied to verify_user() does not exist");
-            return false;
+            return [false, "Invalid email"];
         }
         $user = User::find(DB::table(self::TABLE_NAME)->where('email', $email)->first()->id);
         if ($user->verify_token !== $token) {
             Log::warning("Token supplied to verify_user() does not match");
-            return false;
+            return [false, "Invalid token"];
+        }
+
+        if ($user->verified == '1') {
+            Log::warning("User already verified!");
+            return [false, "User already verified"];
         }
 
         $user->verified = '1';

@@ -56,9 +56,11 @@ class RegistrationController extends Controller {
             Log::error("Request to verify_email() did not supply token or email");
             return $this->api_response('Missing token or email', 400);
         }
-        if (!User::verify_user(Request::get('email'), Request::get('token'))) {
+
+        $verify_response = User::verify_user(Request::get('email'), Request::get('token'));
+        if ($verify_response !== true) {
             Log::error("Couldn't verify user with email: " . Request::get('email'));
-            return $this->api_response("Couldn't verify user", 400);
+            return $this->api_response($verify_response[1], 400);
         }
 
         return $this->api_response("Successfully verified user", 200);
