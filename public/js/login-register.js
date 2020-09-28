@@ -37,22 +37,27 @@ function register() {
 function registerSuccessFadeout() {
     registerForm.fadeOut();
     loginForm.fadeOut();
-    setTimeout(() => {regSuccessSpan.fadeIn();
-    regSuccessSubSpan.fadeIn(); }, 500);
+    setTimeout(() => {
+        regSuccessSpan.fadeIn();
+        regSuccessSubSpan.fadeIn();
+        setTimeout(() => {
+            window.location.reload();
+        }, 3500);
 
+    }, 500);
 }
 
-function login() {
+    function login() {
 
-}
-
-setTimeout(() => {
-    for (let field of autoCompleteHack) {
-        field.value = "";
     }
-}, 800);
 
-signUpButton.addEventListener('click', () => {
+    setTimeout(() => {
+        for (let field of autoCompleteHack) {
+            field.value = "";
+        }
+    }, 800);
+
+    signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
 });
 
