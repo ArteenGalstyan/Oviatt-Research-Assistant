@@ -114,6 +114,18 @@ input {
     min-height: 480px;
 }
 
+#register-success-span {
+    font-size: 72px;
+    padding: 55px;
+    position: absolute;
+    margin-top: 90px;
+}
+#register-success-subspan {
+    padding: 80px;
+    position: absolute;
+    margin-top: 173px;
+}
+
 .form-container {
     position: absolute;
     top: 0;
@@ -249,4 +261,13 @@ footer {
     right: 0;
     text-align: center;
     z-index: 999;
+}
+
+#login-error {
+    margin: 8px;
+    color: red;
+}
+#register-error {
+    margin: 8px;
+    color: red;
 }

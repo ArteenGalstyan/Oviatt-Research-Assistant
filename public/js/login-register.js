@@ -3,11 +3,70 @@ const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 const autoCompleteHack = document.getElementsByTagName('input');
 
+const registerForm = $('#register-form');
+const loginForm = $('#login-form');
+const registerButton = $('#register');
+const loginButton = $('#login');
+const regSuccessSpan = $('#register-success-span');
+const regSuccessSubSpan = $('#register-success-subspan');
+
+function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function register() {
+
+    const passwordConfirm = $('#r-password-confirm');
+    const registerErrorSpan = $('#register-error');
+    const elements = {
+        username: $('#r-username'),
+        password: $('#r-password'),
+        email: $('#r-email'),
+    }
+    if (!validateEmail(elements.email.val())) {
+        registerErrorSpan.html("Email must be valid!");
+        return;
+    }
+
+    if (elements.password.val() !== passwordConfirm.val()) {
+        registerErrorSpan.html("Passwords must match!")
+        return;
+    }
+
+    post('/register', {
+        username: elements.username.val(),
+        password: elements.password.val(),
+        email: elements.email.val(),
+    }, () => {
+        registerSuccessFadeout();
+    }, (response) => {
+        registerErrorSpan.html(JSON.parse(response).reason);
+    });
+}
+
+function registerSuccessFadeout() {
+    registerForm.fadeOut();
+    loginForm.fadeOut();
+    setTimeout(() => {
+        regSuccessSpan.fadeIn();
+        regSuccessSubSpan.fadeIn();
+        setTimeout(() => {
+            window.location.reload();
+        }, 3500);
+
+    }, 500);
+}
+
+function login() {
+
+}
+
 setTimeout(() => {
     for (let field of autoCompleteHack) {
         field.value = "";
     }
-}, 100);
+}, 800);
 
 signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
@@ -16,6 +75,8 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });
+
+registerButton.on('click', register);
 
 tsParticles.load("particles", {
     fps_limit: 60,

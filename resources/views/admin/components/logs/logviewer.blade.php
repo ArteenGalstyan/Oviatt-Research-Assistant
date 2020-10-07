@@ -14,10 +14,15 @@
 </section>
 <script>
     function getLogs() {
-        post('/get_logs', {'host': document.getElementById('host').value}, (response) => {
+        post('/get_logs', {'host': $('#host').val()}, (response) => {
             const lv = document.getElementById('logview');
             lv.innerHTML = response;
         }, () => {});
+        localStorage.setItem('adminHostSelection', $('#host').val())
+    }
+    let lastHost;
+    if ((lastHost = localStorage.getItem('adminHostSelection'))) {
+        $('#host').val(lastHost);
     }
     getLogs();
 </script>

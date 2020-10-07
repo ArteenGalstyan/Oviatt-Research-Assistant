@@ -6,8 +6,16 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Log;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function api_response($msg, $code) {
+        return response()->json([
+            'status' => $code == 200 ? 'success' : 'failure',
+            'reason' => $msg
+        ], $code);
+    }
 }
