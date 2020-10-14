@@ -35,7 +35,7 @@ img {
 .container {
     padding: 3rem;
     width: 60%;
-    margin-top: 400px;
+    margin-top: 376px;
 }
 
 input[type="search"] {
@@ -185,6 +185,7 @@ input.search-submit {
     height: 50px;
     position: absolute;
     bottom: 00px;
+    text-align: center;
 }
 
 #csun-icon-header {
@@ -194,4 +195,21 @@ input.search-submit {
     margin: 0;
 }
 
+.footer-icons {
+    display: inline-block;
+    margin: 20px;
+    font-family: monospace;
+}
 
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+#about-home {
+    background-color: gray;
+    width: 400px;
+    height: 200px;
+    margin: 50px auto 0px;
+
+}

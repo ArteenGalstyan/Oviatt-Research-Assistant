@@ -140,6 +140,7 @@ return [
          * Laravel Framework Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -191,8 +192,16 @@ return [
 
     'aliases' => [
 
-        'App' => Illuminate\Support\Facades\App::class,
+        /* Custom Controllers */
         'AdminController' => \App\Http\Controllers\AdminController::class,
+        'LoginController' => \App\Http\Controllers\LoginController::class,
+        'RegistrationController' => \App\Http\Controllers\RegistrationController::class,
+        'HomeController' => \App\Http\Controllers\HomeController::class,
+
+        /* External Deps */
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
+
+        'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

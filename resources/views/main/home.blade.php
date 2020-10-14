@@ -39,15 +39,21 @@
         <form role="search" method="get" class="search-form form" action="">
             <label>
                 <span class="screen-reader-text">Search for...</span>
-                <input type="search" class="search-field" value="" name="s" title="" />
+                <input type="search" class="search-field" value="" placeholder="Find My Research" name="s" title="" />
             </label>
             <input type="submit" class="search-submit button" value="&#xf002" />
         </form>
-    </div>
-    <div class="footer">
-
+        <div id="about-home">
+            Test
+        </div>
     </div>
 </div>
-<script src="{{asset('js/home.js')}}"></script>
 </body>
+<div class="footer">
+    <a href="#" class="footer-icons">About</a>
+    <a href="#" class="footer-icons">GitHub</a>
+    <a href="#"  class="footer-icons">Login</a>
+    <a href="#"  class="footer-icons">Admin</a>
+</div>
+<script src="{{asset('js/home.js')}}"></script>
 </html>
