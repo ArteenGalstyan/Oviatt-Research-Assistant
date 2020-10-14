@@ -15,12 +15,19 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <style>
+        @import url(//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css);
+        @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+    </style>
 </head>
-<header class="header">
-    <h1 class="logo"></h1>
+<div class="header">
+    <h1 class="logo">
+    <img id="csun-icon-header" src="{{asset('img/csun-icon.png')}}">
+    </h1>
+    <i id="ham-menu" class="fas fa-bars"></i>
     <ul class="main-nav">
     </ul>
-</header>
+</div >
 <body>
 <div class="wrapper">
     <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
@@ -36,6 +43,9 @@
             </label>
             <input type="submit" class="search-submit button" value="&#xf002" />
         </form>
+    </div>
+    <div class="footer">
+
     </div>
 </div>
 <script src="{{asset('js/home.js')}}"></script>
