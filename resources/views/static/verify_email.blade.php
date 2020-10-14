@@ -40,7 +40,7 @@
 <footer class="site-footer" id="footer">
 </footer>
 </body>
-<script src="/js/jquery-3.5.1.min.js"></script>
-<script src="/js/api.js"></script>
-<script src="/js/verify.js"></script>
+<script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+<script src="{{asset('js/api.js')}}}"></script>
+<script src="{{asset('js/verify.js')}}"></script>
 </html>

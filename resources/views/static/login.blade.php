@@ -1,5 +1,5 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="{{asset('css/login.css')}}">
 <div id="particles"></div>
 <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.17.0-beta.7/dist/tsparticles.min.js"></script>
@@ -47,6 +47,6 @@
         </div>
     </div>
 </div>
-<script src="/js/jquery-3.5.1.min.js"></script>
-<script src="/js/api.js"></script>
-<script src="/js/login-register.js"></script>
+<script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+<script src="{{asset('js/api.js')}}}"></script>
+<script src="{{asset('js/login-register.js')}}"></script>
