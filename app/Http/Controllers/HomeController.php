@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller {
 
     public function home() {
-        return view('main.home');
+        return view('home.home', [
+           'isMobile' => $this->agent->isMobile()
+        ]);
     }
 
 }

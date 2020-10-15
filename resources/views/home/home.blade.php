@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Oviatt Assistant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/main/main.css')}}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/home/main.css')}}" />
     <link
             href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap"
             rel="stylesheet"
@@ -43,9 +43,11 @@
             </label>
             <input type="submit" class="search-submit button" value="&#xf002" />
         </form>
+        @if (!$isMobile)
         <div id="about-home">
             Test
         </div>
+        @endif
     </div>
 </div>
 </body>

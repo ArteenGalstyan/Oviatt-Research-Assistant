@@ -198,6 +198,9 @@ return [
         'RegistrationController' => \App\Http\Controllers\RegistrationController::class,
         'HomeController' => \App\Http\Controllers\HomeController::class,
 
+        /* Custom Utils */
+        'WebUtils' => \App\WebUtils::class,
+
         /* External Deps */
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
 

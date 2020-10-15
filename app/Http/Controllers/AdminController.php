@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+use App\WebUtils;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,12 +20,12 @@ class AdminController extends Controller {
         if (Request::has('page')) {
             switch (Request::get('page')) {
                 case 'logs':
-                    return view('admin.admin_home', ['page' => Request::get('page')]);
+                    return view('admin.layout', ['page' => Request::get('page')]);
                 default:
-                    return view('admin.admin_home', ['page' => 'home']);
+                    return view('admin.layout', ['page' => 'home']);
             }
         }
-        return view('admin.admin_home', ['page' => 'home']);
+        return view('admin.layout', ['page' => 'home']);
     }
 
     /**
@@ -34,13 +35,21 @@ class AdminController extends Controller {
      */
     public static function log_statistics_overview() {
 
-        $hosts = [
-            'prod'   => ['/var/www' . self::LOG_PATH, null],
-            'dev'    => ['/home/dev' . self::LOG_PATH, null],
-            'nick'   => ['/home/nick' . self::LOG_PATH, null],
-            'arteen' => ['/home/arteen' . self::LOG_PATH, null],
-            'tyler'  => ['/home/tyler' . self::LOG_PATH, null]
-        ];
+        if (!WebUtils::is_local()) {
+            $hosts = [
+                'prod'   => ['/var/www' . self::LOG_PATH, null],
+                'dev'    => ['/home/dev' . self::LOG_PATH, null],
+                'nick'   => ['/home/nick' . self::LOG_PATH, null],
+                'arteen' => ['/home/arteen' . self::LOG_PATH, null],
+                'tyler'  => ['/home/tyler' . self::LOG_PATH, null]
+            ];
+        }
+        else {
+            $hosts = [
+                'local' => [getcwd() . '/../storage/logs', null]
+            ];
+        }
+
 
         foreach ($hosts as $host => $host_out) {
 
@@ -86,13 +95,20 @@ class AdminController extends Controller {
             http_response_code(400);
             return 'Please specify host';
         }
-        $hosts = [
-            'prod'   => '/var/www' . self::LOG_PATH,
-            'dev'    => '/home/dev' . self::LOG_PATH,
-            'nick'   => '/home/nick' . self::LOG_PATH,
-            'arteen' => '/home/arteen' . self::LOG_PATH,
-            'tyler'  => '/home/tyler' . self::LOG_PATH,
-        ];
+        if (!WebUtils::is_local()) {
+            $hosts = [
+                'prod'   => '/var/www' . self::LOG_PATH,
+                'dev'    => '/home/dev' . self::LOG_PATH,
+                'nick'   => '/home/nick' . self::LOG_PATH,
+                'arteen' => '/home/arteen' . self::LOG_PATH,
+                'tyler'  => '/home/tyler' . self::LOG_PATH,
+            ];
+        }
+        else {
+            $hosts = [
+                'local' => getcwd() . '/../storage/logs'
+            ];
+        }
         if (!in_array(Request::get('host'), array_keys($hosts))) {
             http_response_code(400);
             return 'Invalid host';
