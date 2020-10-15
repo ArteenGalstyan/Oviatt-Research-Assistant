@@ -207,9 +207,23 @@ a {
 }
 
 #about-home {
-    background-color: gray;
-    width: 400px;
-    height: 200px;
+    background-color: #eeeeee;
+    border: 1px solid #d1d1d1;
+    border-radius: 20px;
+    height: 100px;
     margin: 50px auto 0px;
+    padding-top: 90px;
+    text-align: center;
+}
 
+#about-home-text {
+    position: absolute;
+    font-family: monospace;
+}
+
+#powered-by {
+    width: 175px;
+    height: 175px;
+    position: relative;
+    float: left;
 }
