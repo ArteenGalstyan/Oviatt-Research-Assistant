@@ -58,4 +58,4 @@ print("best k: ", k)
 prediction = cvModel.transform(test)
 print(evaluator.evaluate(prediction))
 for i in range(k):
-    prediction.filter(prediction.groupID == i).show()
+    prediction.filter(prediction.prediction == i).show()
