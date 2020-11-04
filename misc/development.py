@@ -24,8 +24,11 @@ data = data.where(data.Abstract.isNotNull())
 data = data.dropDuplicates()
 data = data.withColumn("AbstractLength", F.length(data.Abstract))
 data = data.filter(data.AbstractLength > 2)
-
+print("Number of rows: ", data.count())
 data.show()
+data.describe().show()
+
+
 
 train, test = data.randomSplit([0.9, 0.1], seed=12345)
 # train, test = data.randomSplit([0.5, 0.5], seed=12345)
@@ -57,5 +60,12 @@ print("best k: ", k)
 
 prediction = cvModel.transform(test)
 print(evaluator.evaluate(prediction))
-for i in range(k):
-    prediction.filter(prediction.prediction == i).show()
+prediction.show()
+
+groups = [prediction.filter(prediction.prediction == i) for i in range(k)]
+
+for group in groups:
+    group.describe().show()
+
+
+
