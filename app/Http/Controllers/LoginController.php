@@ -11,6 +11,9 @@ class LoginController extends Controller {
 
 
     public function login_blade() {
+        if (Auth::user() && Auth::user()->verified) {
+            return Redirect::back();
+        }
         return view('static.login');
     }
 
