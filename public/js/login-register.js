@@ -59,7 +59,18 @@ function registerSuccessFadeout() {
 }
 
 function login() {
-
+    const elements = {
+        username: $('#l-username'),
+        password: $('#l-password'),
+    };
+    post('/login', {
+        username: elements.username.val(),
+        password: elements.password.val(),
+    }, () => {
+        window.location = '/';
+    }, (err) => {
+       alert(JSON.parse(err).reason) ;
+    });
 }
 
 setTimeout(() => {
@@ -77,6 +88,7 @@ signInButton.addEventListener('click', () => {
 });
 
 registerButton.on('click', register);
+loginButton.on('click', login);
 
 tsParticles.load("particles", {
     fps_limit: 60,

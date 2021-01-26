@@ -31,7 +31,7 @@
             <input id="l-password" type="password" placeholder="Password" />
             <a href="#">Forgot your password?</a>
             <span id="login-error"></span>
-            <button id="login" onclick="login()">Sign In</button>
+            <button id="login" >Sign In</button>
         </form>
     </div>
     <div class="overlay-container">
@@ -50,5 +50,5 @@
     </div>
 </div>
 <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
-<script src="{{asset('js/api.js')}}}"></script>
+<script src="{{asset('js/api.js')}}"></script>
 <script src="{{asset('js/login-register.js')}}"></script>
