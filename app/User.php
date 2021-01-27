@@ -9,6 +9,12 @@ use Log;
 
 class User extends Authenticatable
 {
+    /**
+     * Model for the `users` table in the Database. Most functions here should be
+     * self-explanatory
+     */
+
+
     use Notifiable;
     const TABLE_NAME = 'users';
 

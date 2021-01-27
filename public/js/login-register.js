@@ -10,11 +10,22 @@ const loginButton = $('#login');
 const regSuccessSpan = $('#register-success-span');
 const regSuccessSubSpan = $('#register-success-subspan');
 
+
+/**
+ * Regex validation for registration emails
+ *
+ * @param email
+ * @returns {boolean}
+ */
 function validateEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
 
+
+/**
+ * Function responsible for firing the API request to the /register POST route
+ */
 function register() {
 
     const passwordConfirm = $('#r-password-confirm');
@@ -23,7 +34,7 @@ function register() {
         username: $('#r-username'),
         password: $('#r-password'),
         email: $('#r-email'),
-    }
+    };
     if (!validateEmail(elements.email.val())) {
         registerErrorSpan.html("Email must be valid!");
         return;
@@ -45,6 +56,10 @@ function register() {
     });
 }
 
+
+/**
+ * Visual helper to show registration success to the user
+ */
 function registerSuccessFadeout() {
     registerForm.fadeOut();
     loginForm.fadeOut();
@@ -58,6 +73,10 @@ function registerSuccessFadeout() {
     }, 500);
 }
 
+
+/**
+ * Function responsible for firing the API request to the /login POST route
+ */
 function login() {
     const elements = {
         username: $('#l-username'),
@@ -73,12 +92,16 @@ function login() {
     });
 }
 
+
+// Disables autocomplete forcefully
 setTimeout(() => {
     for (let field of autoCompleteHack) {
         field.value = "";
     }
 }, 800);
 
+
+// Visual effect event listeners
 signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
 });
@@ -87,9 +110,12 @@ signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });
 
+// API trigger event listeners
 registerButton.on('click', register);
 loginButton.on('click', login);
 
+
+// Visual effect JS (TsParticles)
 tsParticles.load("particles", {
     fps_limit: 60,
     background: {

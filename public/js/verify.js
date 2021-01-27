@@ -3,6 +3,8 @@ const text = $('#text');
 const icon = $('#icon');
 const queries = new URLSearchParams(new URL(window.location.href).search);
 
+
+// Make the API call to verify email with the given params from the verification link
 setTimeout(() => {
 
     if (!(queries.has('email') && queries.has('token'))) {
@@ -21,6 +23,7 @@ setTimeout(() => {
 
 }, 800);
 
+// Visual function for showing user verification has succeeded
 function success() {
 
     title.html("Success!");
@@ -35,6 +38,7 @@ function success() {
     }, 2000);
 }
 
+// Visual function for showing user verification has failed
 function failed(reason = null) {
     title.html("Failed!");
 
