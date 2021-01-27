@@ -18,6 +18,14 @@ class Controller extends BaseController
         $this->agent = new Agent();
     }
 
+    /**
+     * General helper for returning JSON encoded responses to a requesting
+     * client.
+     *
+     * @param $msg
+     * @param $code
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function api_response($msg, $code) {
         return response()->json([
             'status' => $code == 200 ? 'success' : 'failure',

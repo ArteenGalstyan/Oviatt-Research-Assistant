@@ -3,6 +3,10 @@
 namespace App;
 use Log;
 class WebUtils {
+    /**
+     * Helper class for general utilities related to server environment
+     */
+
 
     const LOCAL_HOSTS = [
        'localhost',
