@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-@include('home.components.header')
+@include('universal.header')
 @include('home.components.main_search')
-@include('home.components.footer')
+@include('universal.footer')
 </html>
