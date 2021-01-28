@@ -25,6 +25,8 @@ Route::post('/get_logs', 'AdminController@get_logs');
 Route::get('/login', 'LoginController@login_blade');
 Route::get('/logout', 'LoginController@logout');
 Route::get('/verify_email', 'RegistrationController@verify_email_blade');
+Route::get('/profile', 'UserController@profile_blade');
+
 
 /* General POST Routes */
 Route::post('/login', 'LoginController@login');
