@@ -2,8 +2,6 @@
 <div class="wrapper">
 
     <!-- Logo + Particles -->
-    <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.17.0-beta.7/dist/tsparticles.min.js"></script>
     <div id="particles" class="half-background">
         <img src="{{asset('img/mainlogo.png')}}">
     </div>
