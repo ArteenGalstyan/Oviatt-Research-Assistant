@@ -1,4 +1,10 @@
 <IfModule mod_rewrite.c>
+    
+    # Development virtual hosts only!
+    order deny,allow
+    deny from all
+    allow from 52.53.174.156
+
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>

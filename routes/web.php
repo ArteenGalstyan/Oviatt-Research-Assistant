@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/* Admin GET Routes */
+Route::get('/', 'HomeController@home');
+Route::get('/admin', 'AdminController@home');
+Route::get('/admin/logs', 'AdminController@logs');
+
+/* Admin POST Routes */
+Route::post('/get_logs', 'AdminController@get_logs');
+
+/* General GET Routes */
+Route::get('/login', 'LoginController@login_blade');
+Route::get('/logout', 'LoginController@logout');
+Route::get('/verify_email', 'RegistrationController@verify_email_blade');
+Route::get('/profile', 'UserController@profile_blade');
+
+
+/* General POST Routes */
+Route::post('/login', 'LoginController@login');
+Route::post('/register', 'RegistrationController@register');
+Route::post('/verify_email', 'RegistrationController@verify_email');
