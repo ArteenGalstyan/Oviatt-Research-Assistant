@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 class SearchController extends Controller {
 
     public function search()  {
+        /**
+         * Search API entry point. Serves the blade and activates logic for fetching
+         * search results
+         */
+
         return view('search.layout', [
             'results' => $this->get_search_results(
                 Request::get('s')
@@ -18,6 +23,11 @@ class SearchController extends Controller {
     }
 
     private function get_search_results($query) {
+        /**
+         * Just an example for now, but this will serve up the search cards. More
+         * fields can be added here as needed in the future
+         */
+
         return [
             [
                 'image' => asset('img/csun-icon.png'),
