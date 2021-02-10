@@ -19,7 +19,7 @@
         </form>
 
         <!-- Optional info bar - Can't make this fit on mobile -->
-        @if (!$isMobile)
+        @if (!($isMobile ?? ''))
             <div id="about-home">
                 <span id="about-home-text">Powered by Machine Learning</span>
             </div>
