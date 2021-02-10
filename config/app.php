@@ -198,6 +198,7 @@ return [
         'RegistrationController' => \App\Http\Controllers\RegistrationController::class,
         'HomeController' => \App\Http\Controllers\HomeController::class,
         'UserController' => \App\Http\Controllers\UserController::class,
+        'SearchController' => \App\Http\Controllers\SearchController::class,
 
         /* Custom Utils */
         'WebUtils' => \App\WebUtils::class,
