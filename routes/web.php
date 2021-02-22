@@ -27,6 +27,7 @@ Route::get('/logout', 'LoginController@logout');
 Route::get('/verify_email', 'RegistrationController@verify_email_blade');
 Route::get('/profile', 'UserController@profile_blade');
 Route::get('/search', 'SearchController@search');
+Route::get('/article', 'ArticleController@get_article');
 
 
 /* General POST Routes */
