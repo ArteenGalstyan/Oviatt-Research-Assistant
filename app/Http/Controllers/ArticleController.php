@@ -48,8 +48,9 @@ class ArticleController extends Controller {
             'abstract' => 'Example abstract',
             'isbn' => 32932932993293232,
             'description' => 'Example description',
+            'source_title' => 'Example source',
             'source' => 'Example source',
-            'cover_image' => asset('img/csun-icon.png'),
+            'image' => asset('img/csun-icon.png'),
         ];
     }
 }
