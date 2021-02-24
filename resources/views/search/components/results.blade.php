@@ -8,7 +8,7 @@
                 <div class="bg-cover h-48" style="background-image: url({{$result['image']}});"></div>
                 <div class="p-4 flex-1 flex flex-col" style="
 ">
-                    <h3 class="mb-4 text-2xl">{{$result['title']}}</h3>
+                    <h3 class="mb-4 text-2xl"><a href="article?id={{$result['id']}}">{{$result['title']}}</a></h3>
                     <div class="mb-4 text-grey-darker text-sm flex-1">
                         <p>{{$result['description']}}</p>
                     </div>

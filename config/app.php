@@ -194,6 +194,7 @@ return [
 
         /* Custom Controllers */
         'AdminController' => \App\Http\Controllers\AdminController::class,
+        'ArticleController' => \App\Http\Controllers\ArticleController::class,
         'LoginController' => \App\Http\Controllers\LoginController::class,
         'RegistrationController' => \App\Http\Controllers\RegistrationController::class,
         'HomeController' => \App\Http\Controllers\HomeController::class,

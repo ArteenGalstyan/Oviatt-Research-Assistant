@@ -30,6 +30,7 @@ class SearchController extends Controller {
 
         return [
             [
+                'id' => 12345,
                 'image' => asset('img/csun-icon.png'),
                 'title' => 'Example Title',
                 'description' => 'Example description',
@@ -37,6 +38,7 @@ class SearchController extends Controller {
                 'source_title' => 'Google'
             ],
             [
+                'id' => 12345,
                 'image' => asset('img/csun-icon.png'),
                 'title' => 'Example Title',
                 'description' => 'Example description',
@@ -44,6 +46,7 @@ class SearchController extends Controller {
                 'source_title' => 'Google'
             ],
             [
+                'id' => 12345,
                 'image' => asset('img/csun-icon.png'),
                 'title' => 'Example Title',
                 'description' => 'Example description',
@@ -51,6 +54,7 @@ class SearchController extends Controller {
                 'source_title' => 'Google'
             ],
             [
+                'id' => 12345,
                 'image' => asset('img/csun-icon.png'),
                 'title' => 'Example Title',
                 'description' => 'Example description',
@@ -58,6 +62,7 @@ class SearchController extends Controller {
                 'source_title' => 'Google'
             ],
             [
+                'id' => 12345,
                 'image' => asset('img/csun-icon.png'),
                 'title' => 'Example Title',
                 'description' => 'Example description',
@@ -65,6 +70,7 @@ class SearchController extends Controller {
                 'source_title' => 'Google'
             ],
             [
+                'id' => 12345,
                 'image' => asset('img/csun-icon.png'),
                 'title' => 'Example Title',
                 'description' => 'Example description',
