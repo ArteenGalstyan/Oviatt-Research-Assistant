@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use DB;
+use Log;
+
+class SearchHistory extends Model
+{
+    /**
+     * Model for the `users` table in the Database. Most functions here should be
+     * self-explanatory
+     */
+
+
+    use Notifiable;
+    const TABLE_NAME = 'search_history';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id', 'query', 'user_id', 'date'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+
+    public static function get_user_history() {
+
+    }
+
+
+
+}
