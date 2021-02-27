@@ -206,7 +206,7 @@ return [
         'WebUtils' => \App\WebUtils::class,
 
         /* Models */
-        'SearchHistory' => \App\Models\SearchHistory::class,
+        'SearchHistory' => \App\SearchHistory::class,
 
         /* External Deps */
         'Agent' => Jenssegers\Agent\Facades\Agent::class,

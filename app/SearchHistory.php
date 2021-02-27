@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
@@ -44,8 +44,8 @@ class SearchHistory extends Model
         'date' => 'datetime',
     ];
 
-    public static function get_user_history() {
-
+    public static function get_user_history($user_id) {
+        return DB::table(self::TABLE_NAME)->where('user_id', $user_id)->get()->toArray();
     }
 
 

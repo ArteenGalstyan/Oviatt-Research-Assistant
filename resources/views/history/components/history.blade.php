@@ -20,8 +20,8 @@
                     <tbody>
                     @foreach ($queries as $query)
                         <tr data-seq="1">
-                            <td class="td_row_text">{{$query['query']}}</td>
-                            <td class="text-center"><i id="{{$query['id']}}" class="fas fa-trash remove_row"></i></td>
+                            <td class="td_row_text">{{$query->query}}</td>
+                            <td class="text-center"><i id="{{$query->id}}" class="fas fa-trash remove_row"></i></td>
                         </tr>
                     @endforeach
                     </tbody>
