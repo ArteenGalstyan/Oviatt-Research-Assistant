@@ -48,6 +48,10 @@ class SearchHistory extends Model
         return DB::table(self::TABLE_NAME)->where('user_id', $user_id)->get()->toArray();
     }
 
+    public static function delete_query_history($id) {
+        return DB::table(self::TABLE_NAME)->where('id', $id)->delete();
+    }
+
 
 
 }

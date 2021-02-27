@@ -35,3 +35,4 @@ Route::get('/history', 'HistoryController@history_blade');
 Route::post('/login', 'LoginController@login');
 Route::post('/register', 'RegistrationController@register');
 Route::post('/verify_email', 'RegistrationController@verify_email');
+Route::post('/search/delete', 'HistoryController@delete_history');

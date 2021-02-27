@@ -15,4 +15,11 @@ class HistoryController extends Controller {
             'queries' => SearchHistory::get_user_history(Auth::user()->id)
         ]);
     }
+
+    public function delete_history() {
+        if (!Request::has('id')) {
+            return $this->api_response('Please supply query history ID', 400);
+        }
+        SearchHistory::delete_query_history(Request::get('id'));
+    }
 }

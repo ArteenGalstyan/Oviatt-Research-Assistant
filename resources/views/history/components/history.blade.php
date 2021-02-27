@@ -21,7 +21,7 @@
                     @foreach ($queries as $query)
                         <tr data-seq="1">
                             <td class="td_row_text">{{$query->query}}</td>
-                            <td class="text-center"><i id="{{$query->id}}" class="fas fa-trash remove_row"></i></td>
+                            <td class="text-center"><i onclick="delete_history({{$query->id}})" class="fas fa-trash remove_row"></i></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -35,3 +35,11 @@
         height: 50px;
     }
 </style>
+
+<script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+<script src="{{asset('js/api.js')}}"></script>
+<script>
+    function delete_history(id) {
+        post('/search/delete', {'id': id}, () => {alert('Success'); window.location.reload()}, () => {alert('Failed'); window.location.reload()})
+    }
+</script>
