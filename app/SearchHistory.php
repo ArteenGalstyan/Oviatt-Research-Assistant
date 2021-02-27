@@ -36,6 +36,20 @@ class SearchHistory extends Model
     ];
 
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true;
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -52,6 +66,13 @@ class SearchHistory extends Model
         return DB::table(self::TABLE_NAME)->where('id', $id)->delete();
     }
 
+    public static function record_user_search($query, $user_id) {
+        return DB::table(self::TABLE_NAME)->insert([
+            'query' => $query,
+            'user_id' => $user_id,
+            'date' => date('Y-m-d H:i:s')
+        ]);
+    }
 
 
 }

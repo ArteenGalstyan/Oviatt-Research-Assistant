@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\SearchHistory;
 use App\WebUtils;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
@@ -14,7 +15,13 @@ class SearchController extends Controller {
          * Search API entry point. Serves the blade and activates logic for fetching
          * search results
          */
+        if (!Request::get('s')) {
+            return view('home.layout');
+        }
 
+        if (Auth::user()) {
+            SearchHistory::record_user_search(Request::get('s'), Auth::user()->id);
+        }
         return view('search.layout', [
             'results' => $this->get_search_results(
                 Request::get('s')
