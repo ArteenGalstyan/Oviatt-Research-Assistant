@@ -11,10 +11,18 @@ use Illuminate\Support\Facades\DB;
 class HistoryController extends Controller {
 
     public function history_blade() {
-        return view('history.layout');
+        return view('history.layout', [
+            'queries' => $this->get_user_history(Auth::user()->id)
+        ]);
     }
 
     private function get_user_history($user_id) {
+        return [
+            [
+                'query' => 'foo',
+                'id' => '5',
+            ]
+        ];
     }
 
 }

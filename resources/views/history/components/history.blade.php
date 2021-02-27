@@ -18,18 +18,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr data-seq="1">
-                        <td class="td_row_text">Mark</td>
-                        <td class="text-center"><i class="fas fa-trash remove_row"></i></td>
-                    </tr>
-                    <tr data-seq="2">
-                        <td class="td_row_text">Jacob</td>
-                        <td class="text-center"><i class="fas fa-trash remove_row"></i></td>
-                    </tr>
-                    <tr data-seq="3">
-                        <td class="td_row_text">Larry</td>
-                        <td class="text-center"><i class="fas fa-trash remove_row"></i></td>
-                    </tr>
+                    @foreach ($queries as $query)
+                        <tr data-seq="1">
+                            <td class="td_row_text">{{$query['query']}}</td>
+                            <td class="text-center"><i id="{{$query['id']}}" class="fas fa-trash remove_row"></i></td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
