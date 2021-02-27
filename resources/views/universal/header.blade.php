@@ -24,7 +24,7 @@
 
 <div class="header">
     <h1 class="logo">
-    <img id="csun-icon-header" src="{{asset('img/csun-icon.png')}}">
+        <a style="padding: 0;" href="/"><img id="csun-icon-header" src="{{asset('img/csun-icon.png')}}"></a>
     </h1>
     <i id="ham-menu" class="fas fa-bars"></i>
     <ul class="main-nav">
