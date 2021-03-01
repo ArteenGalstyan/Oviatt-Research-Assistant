@@ -156,6 +156,8 @@ html div, html h1, html input, body div, body h1, body input {
     text-align: center;
     width: 80px;
     margin-right: 20px;
+    background-image: url('/img/profile-default.jpg');
+    background-size: 80px;
 }
 #main #app #settings-panel #details-view-wrapper #details-view #my-account-info-wrapper #my-account-info #profile-pic i {
     left: 50%;
