@@ -12,9 +12,14 @@ class UserController extends Controller {
 
     public function profile_blade() {
         if (Auth::user() && Auth::user()->verified) {
-            return view('profile.layout');
+            return view('profile.layout', [
+                'username' => Auth::user()->username,
+                'email' => Auth::user()->email
+            ]);
         }
         return Redirect::to('/');
+
+
     }
 
 }

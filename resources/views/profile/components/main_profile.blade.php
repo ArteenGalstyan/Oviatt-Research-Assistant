@@ -18,15 +18,6 @@
                 <div class="option selected" id="option-2">
                     <h1>My Account</h1>
                 </div>
-                <div class="option" id="option-3">
-                    <h1>Privacy</h1>
-                </div>
-                <div class="option" id="option-4">
-                    <h1>Language</h1>
-                </div>
-                <div class="option" id="option-5">
-                    <h1>Change Log</h1>
-                </div>
             </div>
             <div id="details-view-wrapper">
                 <div id="details-view">
@@ -39,15 +30,19 @@
                             <div id="account-fields">
                                 <div class="account-field">
                                     <h1 class="label">USERNAME</h1>
-                                    <input class="input" type="text" >
+                                    <input class="input" type="text" value="{{$username}}" disabled >
                                 </div>
                                 <div class="account-field">
                                     <h1 class="label">EMAIL</h1>
-                                    <input class="input" type="text" >
+                                    <input class="input" type="text" value="{{$email}}" disabled>
                                 </div>
                                 <div class="account-field">
-                                    <h1 class="label">CURRENT PASSWORD</h1>
-                                    <input class="input" type="password">
+                                    <h1 class="label">NEW PASSWORD</h1>
+                                    <input class="input password-change" type="password">
+                                </div>
+                                <div class="account-field">
+                                    <h1 class="label">CONFIRM NEW PASSWORD</h1>
+                                    <input class="input password-change" type="password">
                                 </div>
                             </div>
                         </div>
@@ -67,11 +62,12 @@
 </div>
 </body>
 <script>
-    const autoCompleteHack = document.getElementsByTagName('input');
-    // Disables autocomplete forcefully
-    setTimeout(() => {
+const autoCompleteHack = document.getElementsByClassName('password-change');
+// Disables autocomplete forcefully
+setTimeout(() => {
         for (let field of autoCompleteHack) {
             field.value = "";
         }
     }, 800);
 </script>
+

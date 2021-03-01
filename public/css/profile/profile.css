@@ -184,7 +184,7 @@ html div, html h1, html input, body div, body h1, body input {
     margin: 0px;
 }
 #main #app #settings-panel #details-view-wrapper #details-view #my-account-info-wrapper #my-account-info #account-fields .account-field input {
-    background-color: #e4e4e4;
+    background-color: #696767;
     border: 1px solid black;
     border-radius: 2px;
     color: gainsboro;
