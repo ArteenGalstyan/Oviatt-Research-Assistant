@@ -198,11 +198,15 @@ return [
         'LoginController' => \App\Http\Controllers\LoginController::class,
         'RegistrationController' => \App\Http\Controllers\RegistrationController::class,
         'HomeController' => \App\Http\Controllers\HomeController::class,
+        'HistoryController' => \App\Http\Controllers\HistoryController::class,
         'UserController' => \App\Http\Controllers\UserController::class,
         'SearchController' => \App\Http\Controllers\SearchController::class,
 
         /* Custom Utils */
         'WebUtils' => \App\WebUtils::class,
+
+        /* Models */
+        'SearchHistory' => \App\SearchHistory::class,
 
         /* External Deps */
         'Agent' => Jenssegers\Agent\Facades\Agent::class,

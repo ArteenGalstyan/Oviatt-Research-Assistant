@@ -28,9 +28,11 @@ Route::get('/verify_email', 'RegistrationController@verify_email_blade');
 Route::get('/profile', 'UserController@profile_blade');
 Route::get('/search', 'SearchController@search');
 Route::get('/article', 'ArticleController@get_article');
+Route::get('/history', 'HistoryController@history_blade');
 
 
 /* General POST Routes */
 Route::post('/login', 'LoginController@login');
 Route::post('/register', 'RegistrationController@register');
 Route::post('/verify_email', 'RegistrationController@verify_email');
+Route::post('/search/delete', 'HistoryController@delete_history');
