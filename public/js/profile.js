@@ -14,4 +14,4 @@ function changePassword() {
         alert('Failed to update password');
     });
 }
-$('#save-button').click(() => {changePassword();})
+$('#save-button').click(() => {changePassword();});
