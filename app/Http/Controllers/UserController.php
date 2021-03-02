@@ -24,9 +24,16 @@ class UserController extends Controller {
 
     public function change_password($new_password) {
         if (Auth::user() && Request::has('new_password')) {
-            User::update_password($new_password);
+            $ret = User::update_password($new_password);
+            return $this->api_response(
+                $ret ? 'Successfully updated password' : 'Failed to update password',
+                $ret ? 200 : 400
+            );
         }
-
+        return $this->api_response(
+            'Must be logged in',
+            400
+        );
     }
 
 }

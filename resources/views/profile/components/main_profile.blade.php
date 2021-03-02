@@ -38,11 +38,11 @@
                                 </div>
                                 <div class="account-field">
                                     <h1 class="label">NEW PASSWORD</h1>
-                                    <input class="input password-change" type="password">
+                                    <input id="password" class="input password-change" type="password">
                                 </div>
                                 <div class="account-field">
                                     <h1 class="label">CONFIRM NEW PASSWORD</h1>
-                                    <input class="input password-change" type="password">
+                                    <input id="password-confirm" class="input password-change" type="password">
                                 </div>
                             </div>
                         </div>
@@ -61,6 +61,9 @@
     </div>
 </div>
 </body>
+<script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+<script src="{{asset('js/api.js')}}"></script>
+<script src="{{asset('js/profile.js')}}"></script>
 <script>
 const autoCompleteHack = document.getElementsByClassName('password-change');
 // Disables autocomplete forcefully

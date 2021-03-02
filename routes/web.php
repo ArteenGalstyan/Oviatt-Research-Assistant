@@ -36,3 +36,4 @@ Route::post('/login', 'LoginController@login');
 Route::post('/register', 'RegistrationController@register');
 Route::post('/verify_email', 'RegistrationController@verify_email');
 Route::post('/search/delete', 'HistoryController@delete_history');
+Route::post('/password/update', 'UserController@change_password');
