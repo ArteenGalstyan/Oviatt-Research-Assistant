@@ -22,4 +22,11 @@ class UserController extends Controller {
 
     }
 
+    public function change_password($new_password) {
+        if (Auth::user() && Request::has('new_password')) {
+            User::update_password($new_password);
+        }
+
+    }
+
 }
