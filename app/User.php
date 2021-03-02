@@ -105,4 +105,10 @@ class User extends Authenticatable
         $user->save();
         return true;
     }
+
+    public static function update_password($password) {
+        return DB::table(self::TABLE_NAME)->update([
+            'password' => password_hash($password, PASSWORD_DEFAULT)
+        ]);
+    }
 }
