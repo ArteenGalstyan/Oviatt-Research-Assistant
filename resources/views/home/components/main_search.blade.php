@@ -24,15 +24,21 @@
                 <table id="trending" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th scope="col" class="col-md-1">#</th>
+                        <th scope="col" class="col-md-1">Total</th>
                         <th scope="col" class="col-md-1">Trending Searches</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr data-seq="1">
-                        <td class="td_row_text">1</td>
-                        <td class="td_row_text">Query</td>
-                    </tr>
+                    @foreach ($trending as $query => $count)
+                        <tr data-seq="1">
+                            <td class="td_row_text">{{$count}}</td>
+                            <td class="td_row_text">{{$query}}</td>
+                        </tr>
+                        @if ($entry_count++ & $entry_count > 5)
+                            @break
+                        @endif
+
+                    @endforeach
                     </tbody>
                 </table>
             </div>

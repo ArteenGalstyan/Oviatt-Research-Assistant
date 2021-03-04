@@ -24,7 +24,7 @@ class HistoryController extends Controller {
         return $this->api_response('Success', 200);
     }
 
-    public function get_trending_searches() {
+    public static function get_trending_searches() {
         $searches = SearchHistory::get_trending_searches();
         $grouped_searches = [];
         foreach ($searches as $search) {
@@ -32,7 +32,7 @@ class HistoryController extends Controller {
                 $grouped_searches[strtolower($search->query)]++;
             }
             else {
-                $grouped_searches[strtolower($search->query)] += 1;
+                $grouped_searches[strtolower($search->query)] = 1;
             }
         }
         return $grouped_searches;
