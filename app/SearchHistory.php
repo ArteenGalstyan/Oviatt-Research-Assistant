@@ -74,5 +74,13 @@ class SearchHistory extends Model
         ]);
     }
 
+    public static function get_trending_searches() {
+        return DB::table(self::TABLE_NAME)->where(
+            'date',
+            '>=',
+            date('Y-m-d H:i:s', strtotime('-1 week'))
+        )->get();
+    }
+
 
 }

@@ -21,10 +21,20 @@ class HistoryController extends Controller {
             return $this->api_response('Please supply query history ID', 400);
         }
         SearchHistory::delete_query_history(Request::get('id'));
+        return $this->api_response('Success', 200);
     }
 
     public function get_trending_searches() {
-
-
+        $searches = SearchHistory::get_trending_searches();
+        $grouped_searches = [];
+        foreach ($searches as $search) {
+            if (array_key_exists(strtolower($search->query), $grouped_searches)) {
+                $grouped_searches[strtolower($search->query)]++;
+            }
+            else {
+                $grouped_searches[strtolower($search->query)] += 1;
+            }
+        }
+        return $grouped_searches;
     }
 }
