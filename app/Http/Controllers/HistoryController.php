@@ -22,4 +22,9 @@ class HistoryController extends Controller {
         }
         SearchHistory::delete_query_history(Request::get('id'));
     }
+
+    public function get_trending_searches() {
+
+
+    }
 }

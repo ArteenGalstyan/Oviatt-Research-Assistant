@@ -19,9 +19,11 @@ class SearchController extends Controller {
             return view('home.layout');
         }
 
-        if (Auth::user()) {
-            SearchHistory::record_user_search(Request::get('s'), Auth::user()->id);
-        }
+        SearchHistory::record_user_search(
+            Request::get('s'),
+            Auth::user() ? Auth::user()->id : -1
+        );
+
         return view('search.layout', [
             'results' => $this->get_search_results(
                 Request::get('s')
