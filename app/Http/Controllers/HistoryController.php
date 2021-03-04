@@ -35,6 +35,7 @@ class HistoryController extends Controller {
                 $grouped_searches[strtolower($search->query)] = 1;
             }
         }
+        arsort($grouped_searches);
         return $grouped_searches;
     }
 }
