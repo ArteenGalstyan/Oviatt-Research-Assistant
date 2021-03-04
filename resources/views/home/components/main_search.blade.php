@@ -21,9 +21,21 @@
         <!-- Optional info bar - Can't make this fit on mobile -->
         @if (!($isMobile ?? ''))
             <div id="about-home">
-                <span id="about-home-text">Powered by Machine Learning</span>
+                <table id="trending" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="col-md-1">#</th>
+                        <th scope="col" class="col-md-1">Trending Searches</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-seq="1">
+                        <td class="td_row_text">1</td>
+                        <td class="td_row_text">Query</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <img id="powered-by" src="{{asset('img/aibrain.png')}}">
         @endif
     </div>
 </div>
