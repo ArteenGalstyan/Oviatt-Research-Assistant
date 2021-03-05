@@ -21,9 +21,27 @@
         <!-- Optional info bar - Can't make this fit on mobile -->
         @if (!($isMobile ?? ''))
             <div id="about-home">
-                <span id="about-home-text">Powered by Machine Learning</span>
+                <table id="trending" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="col-md-1">Total</th>
+                        <th scope="col" class="col-md-1">Trending Searches</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($trending as $query => $count)
+                        <tr data-seq="1">
+                            <td class="td_row_text">{{$count}}</td>
+                            <td class="td_row_text">{{$query}}</td>
+                        </tr>
+                        @if ($entry_count++ & $entry_count > 5)
+                            @break
+                        @endif
+
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
-            <img id="powered-by" src="{{asset('img/aibrain.png')}}">
         @endif
     </div>
 </div>
