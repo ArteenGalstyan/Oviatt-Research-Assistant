@@ -53,7 +53,14 @@ class ArticleController extends Controller {
             'isbn' => $result->ISBN,
             'source_title' => $result->SOURCE,
             'source' => 'https://google.com/search?q='.$result->SOURCE,
-            'image' => asset('img/csun-icon.png'),
+            'image' => '',
+            'keywords' => $result->AUTHOR_SUPPLIED_KEYWORDS,
+            'subjects' => $result->SUBJECTS,
+            'pub_type' => $result->PUB_TYPE,
+            'publisher' => $result->PUBLISHER,
+            'year' => $result->PUB_YEAR,
+            'issn' => $result->ISSN,
+            'isbn' => $result->ISBN,
         ];
     }
 }
