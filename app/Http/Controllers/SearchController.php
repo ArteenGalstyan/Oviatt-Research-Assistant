@@ -45,7 +45,7 @@ class SearchController extends Controller {
                 'image' => $this->get_related_image($query, $count++),
                 'title' => $result->TITLE,
                 'description' => $result->ABSTRACT,
-                'source' => 'https://google.com',
+                'source' => 'https://google.com/search?q='.$result->SOURCE,
                 'source_title' => $result->SOURCE
             ]);
         }

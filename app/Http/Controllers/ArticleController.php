@@ -42,14 +42,17 @@ class ArticleController extends Controller {
     }
 
     private function fetch_article_data($id) {
+        $result = DB::connection('oa_data')
+            ->table('oa_data')
+            ->where('id', $id)
+            ->first();
 
         return [
-            'title' =>  'Example Title',
-            'abstract' => 'Example abstract',
-            'isbn' => 32932932993293232,
-            'description' => 'Example description',
-            'source_title' => 'Example source',
-            'source' => 'Example source',
+            'title' => $result->TITLE,
+            'description' => $result->ABSTRACT,
+            'isbn' => $result->ISBN,
+            'source_title' => $result->SOURCE,
+            'source' => 'https://google.com/search?q='.$result->SOURCE,
             'image' => asset('img/csun-icon.png'),
         ];
     }
