@@ -32,11 +32,22 @@ class SearchController extends Controller {
     }
 
     private function get_search_results($query) {
-        /**
-         * Just an example for now, but this will serve up the search cards. More
-         * fields can be added here as needed in the future
-         */
-
+        $results = DB::connection('oa_data')
+            ->table('oa_data')
+            ->whereRaw("UPPER(oa_data.TITLE) LIKE '%". strtoupper($query)."%'")
+            ->get();
+        $out = [];
+        foreach ($results as $result) {
+            array_push($out, [
+                'id' => $result->ID,
+                'image' => asset('img/csun-icon.png'),
+                'title' => $result->TITLE,
+                'description' => $result->ABSTRACT,
+                'source' => 'https://google.com',
+                'source_title' => $result->SOURCE
+            ]);
+        }
+        return $out;
         return [
             [
                 'id' => 12345,
