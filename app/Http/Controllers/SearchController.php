@@ -33,8 +33,7 @@ class SearchController extends Controller {
 
     private function get_search_results($query)
     {
-        $results = DB::connection('oa_data')
-            ->table('oa_data')
+        $results = DB::table('oa_data')
             ->whereRaw("UPPER(oa_data.TITLE) LIKE '%" . strtoupper($query) . "%' LIMIT 10")
             ->get();
         $out = [];

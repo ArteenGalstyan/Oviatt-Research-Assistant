@@ -42,8 +42,7 @@ class ArticleController extends Controller {
     }
 
     private function fetch_article_data($id) {
-        $result = DB::connection('oa_data')
-            ->table('oa_data')
+        $result = DB::table('oa_data')
             ->where('id', $id)
             ->first();
 
