@@ -3,13 +3,21 @@
 <div class="flex flex-wrap" style="margin: 65px">
 <div class="w-full">
     <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
-        <div class="bg-cover h-48" style="background-image: url({{$data['image']}}); background-attachment: fixed;
+        <div class="bg-cover h-12" style="background-image: url({{$data['image']}}); background-attachment: fixed;
                 background-position: center;"></div>
         <div class="p-4 flex-1 flex flex-col" style="
 ">
             <h3 class="mb-4 text-2xl"><a href="">{{$data['title']}}</a></h3>
             <div class="mb-4 text-grey-darker text-sm flex-1">
                 <p>{{$data['description']}}</p>
+                <br>
+                <p><b>Keywords</b>: {{str_replace('\n', ', ', $data['keywords'])}}</p>
+                <p><b>Subjects</b>: {{str_replace('\n', ', ', $data['subjects'])}}</p>
+                <p><b>Publication Type</b>: {{str_replace('\n', ', ', $data['pub_type'])}}</p>
+                <p><b>Publisher</b>: {{str_replace('\n', ', ', $data['publisher'])}}</p>
+                <p><b>Year</b>: {{str_replace('\n', ', ', $data['year'])}}</p>
+                <p><b>ISSN</b>: {{str_replace('\n', ', ', $data['issn'])}}</p>
+                <p><b>ISBN</b>: {{str_replace('\n', ', ', $data['isbn'])}}</p>
             </div>
             <a href="{{$data['source']}}" class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide" style="">{{$data['source_title']}}</a>
         </div>

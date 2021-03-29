@@ -31,61 +31,47 @@ class SearchController extends Controller {
         ]);
     }
 
-    private function get_search_results($query) {
-        /**
-         * Just an example for now, but this will serve up the search cards. More
-         * fields can be added here as needed in the future
-         */
+    private function get_search_results($query)
+    {
+        $results = DB::table('oa_data')
+            ->whereRaw("UPPER(oa_data.TITLE) LIKE '%" . strtoupper($query) . "%' LIMIT 9")
+            ->get();
+        $out = [];
+        $count = 0;
+        foreach ($results as $result) {
+            array_push($out, [
+                'id' => $result->ID,
+                'image' => $this->get_related_image($query, $count++),
+                'title' => $result->TITLE,
+                'description' => $result->ABSTRACT,
+                'source' => 'https://google.com/search?q='.$result->SOURCE,
+                'source_title' => $result->SOURCE
+            ]);
+        }
+        return $out;
+    }
 
-        return [
-            [
-                'id' => 12345,
-                'image' => asset('img/csun-icon.png'),
-                'title' => 'Example Title',
-                'description' => 'Example description',
-                'source' => 'https://google.com',
-                'source_title' => 'Google'
-            ],
-            [
-                'id' => 12345,
-                'image' => asset('img/csun-icon.png'),
-                'title' => 'Example Title',
-                'description' => 'Example description',
-                'source' => 'https://google.com',
-                'source_title' => 'Google'
-            ],
-            [
-                'id' => 12345,
-                'image' => asset('img/csun-icon.png'),
-                'title' => 'Example Title',
-                'description' => 'Example description',
-                'source' => 'https://google.com',
-                'source_title' => 'Google'
-            ],
-            [
-                'id' => 12345,
-                'image' => asset('img/csun-icon.png'),
-                'title' => 'Example Title',
-                'description' => 'Example description',
-                'source' => 'https://google.com',
-                'source_title' => 'Google'
-            ],
-            [
-                'id' => 12345,
-                'image' => asset('img/csun-icon.png'),
-                'title' => 'Example Title',
-                'description' => 'Example description',
-                'source' => 'https://google.com',
-                'source_title' => 'Google'
-            ],
-            [
-                'id' => 12345,
-                'image' => asset('img/csun-icon.png'),
-                'title' => 'Example Title',
-                'description' => 'Example description',
-                'source' => 'https://google.com',
-                'source_title' => 'Google'
-            ],
-        ];
+    private function get_related_image($query, $index) {
+        $ch = curl_init();
+        curl_setopt(
+            $ch,
+            CURLOPT_URL,
+            "https://pixabay.com/api/?key=20903304-d6b87a5a7f557a5a58db0a4fa&q=".$query."&image_type=photo"
+        );
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $output = curl_exec($ch);
+        curl_close($ch);
+
+        $out_decoded = json_decode($output);
+        $count = 0;
+        foreach ($out_decoded->hits as $hit) {
+            if ($count == $index) {
+                return $hit->largeImageURL;
+            }
+            $count++;
+        }
+        return asset('img/csun-icon.png');
     }
 }
