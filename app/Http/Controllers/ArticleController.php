@@ -29,7 +29,8 @@ class ArticleController extends Controller {
         return view('articles.layout', [
             'status' => 'success',
             'reason' => null,
-            'data' => $this->fetch_article_data(Request::get('id'))
+            'data' => $this->fetch_article_data(Request::get('id')),
+            'suggested' => $this->fetch_suggested_articles(Request::get('id'))
         ]);
     }
 
@@ -61,5 +62,17 @@ class ArticleController extends Controller {
             'issn' => $result->ISSN,
             'isbn' => $result->ISBN,
         ];
+    }
+
+    private function fetch_suggested_articles($id) {
+        $result = DB::table('oa_data')
+            ->where('id', $id)
+            ->select('group_id')
+            ->first();
+        $suggested = DB::table('oa_data')
+            ->where('group_id', $result->group_id)
+            ->limit(3)
+            ->get();
+        return $suggested->toArray();
     }
 }

@@ -23,42 +23,20 @@
         </div>
     </div>
 </div>
-    <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
-            <div class="p-4 flex-1 flex flex-col" style="
-">
-                <h3 class="mb-4 text-1xl"><a href="article?id={{$data['keywords']}}">{{$data['title']}}</a></h3>
-                <div class="mb-4 text-grey-darker text-sm flex-1">
-                    <p>{{substr($data['description'], 0, 64) . '...' }}</p>
+    @foreach($suggested as $suggestion)
+        {{Log::debug(print_r($suggestion, true))}}
+        <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
+                <div class="p-4 flex-1 flex flex-col" style="">
+                    <h3 class="mb-4 text-1xl"><a href="article?id={{$suggestion->ID}}">{{$suggestion->TITLE}}</a></h3>
+                    <div class="mb-4 text-grey-darker text-sm flex-1">
+                        <p>{{substr($suggestion->ABSTRACT, 0, 64) . '...' }}</p>
+                    </div>
+                    <a href="{{$suggestion->SOURCE}}" class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide" style="">{{$suggestion->SOURCE}}</a>
                 </div>
-                <a href="{{$data['source']}}" class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide" style="">{{$data['source_title']}}</a>
             </div>
         </div>
-    </div>
-    <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
-            <div class="p-4 flex-1 flex flex-col" style="
-">
-                <h3 class="mb-4 text-1xl"><a href="article?id={{$data['keywords']}}">{{$data['title']}}</a></h3>
-                <div class="mb-4 text-grey-darker text-sm flex-1">
-                    <p>{{substr($data['description'], 0, 64) . '...' }}</p>
-                </div>
-                <a href="{{$data['source']}}" class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide" style="">{{$data['source_title']}}</a>
-            </div>
-        </div>
-    </div>
-    <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
-            <div class="p-4 flex-1 flex flex-col" style="
-">
-                <h3 class="mb-4 text-1xl"><a href="article?id={{$data['keywords']}}">{{$data['title']}}</a></h3>
-                <div class="mb-4 text-grey-darker text-sm flex-1">
-                    <p>{{substr($data['description'], 0, 64) . '...' }}</p>
-                </div>
-                <a href="{{$data['source']}}" class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide" style="">{{$data['source_title']}}</a>
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 <style>
     .header {
