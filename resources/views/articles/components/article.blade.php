@@ -23,8 +23,10 @@
         </div>
     </div>
 </div>
+    <div class="container" style="margin-top: 0px; padding: 0;">
+        <h4 class="mb-4 text-2xl">Related Articles</h4>
+    </div>
     @foreach($suggested as $suggestion)
-        {{Log::debug(print_r($suggestion, true))}}
         <div class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
                 <div class="p-4 flex-1 flex flex-col" style="">

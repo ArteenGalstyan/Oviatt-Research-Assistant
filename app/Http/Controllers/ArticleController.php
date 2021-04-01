@@ -72,6 +72,7 @@ class ArticleController extends Controller {
         $suggested = DB::table('oa_data')
             ->where('group_id', $result->group_id)
             ->limit(3)
+            ->inRandomOrder()
             ->get();
         return $suggested->toArray();
     }
