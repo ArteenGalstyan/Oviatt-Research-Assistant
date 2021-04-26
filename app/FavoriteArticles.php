@@ -76,7 +76,7 @@ class FavoriteArticles extends Model
     }
 
     public static function unfavorite_article($article_id, $user_id) {
-        if (self::is_favorited($article_id, $user_id)) {
+        if (!self::is_favorited($article_id, $user_id)) {
             return true;
         }
         return DB::table(self::TABLE_NAME)

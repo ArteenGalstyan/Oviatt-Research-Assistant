@@ -6,8 +6,8 @@
                 'id': articleId,
                 'user_id': userId
             },
-            () => {alert('Successfully favorited article')},
-            () => {alert('Failed to favorite article')}
+            (res) => {alert(JSON.parse(res).reason); window.location.reload()},
+            (res) => {alert(JSON.parse(res).reason); window.location.reload()}
         );
     }
 </script>

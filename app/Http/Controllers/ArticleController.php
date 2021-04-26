@@ -35,19 +35,29 @@ class ArticleController extends Controller {
         ]);
     }
 
-
     public function favorite_article() {
         if (!Request::has('id') || !Request::has('user_id')) {
             return $this->api_response('Failed to favorite article. Missing parameters', 400);
         }
-        if (FavoriteArticles::favorite_article(
-            Request::get('id'),
-            Request::get('user_id')
-        )) {
-            return $this->api_response('Successfully favorited article', 200);
+        if (FavoriteArticles::is_favorited(Request::get('id'), Request::get('user_id'))) {
+            if (FavoriteArticles::unfavorite_article(
+                Request::get('id'),
+                Request::get('user_id')
+            )) {
+                return $this->api_response('Successfully unfavorited article', 200);
+            } else {
+                return $this->api_response('Failed to unfavorite article. Internal error', 500);
+            }
         }
         else {
-            return $this->api_response('Failed to favorite article. Internal error', 500);
+            if (FavoriteArticles::favorite_article(
+                Request::get('id'),
+                Request::get('user_id')
+            )) {
+                return $this->api_response('Successfully favorited article', 200);
+            } else {
+                return $this->api_response('Failed to favorite article. Internal error', 500);
+            }
         }
     }
 
