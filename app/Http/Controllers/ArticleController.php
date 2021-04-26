@@ -65,6 +65,7 @@ class ArticleController extends Controller {
             ->first();
 
         return [
+            'id' => $id,
             'title' => $result->TITLE,
             'description' => $result->ABSTRACT,
             'isbn' => $result->ISBN,

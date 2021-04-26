@@ -1,3 +1,16 @@
+<script src="{{asset('js/api.js')}}"></script>
+<script>
+    function favoriteArticle(articleId, userId) {
+        post('/article/favorite',
+            {
+                'id': articleId,
+                'user_id': userId
+            },
+            () => {alert('Successfully favorited article')},
+            () => {alert('Failed to favorite article')}
+        );
+    }
+</script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
 <div class="flex flex-wrap" style="margin: 65px">
@@ -21,7 +34,7 @@
             </div>
             <a href="{{$data['source']}}" class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide" style="">{{$data['source_title']}}</a>
             <br>
-            <i class="fas fa-heart" style="color: {{$data['is_favorited'] ? "red" : "gray"}}"></i>
+            <a style="cursor: pointer" onclick="favoriteArticle({{$data['id']}}, {{Auth::user()->id}})"><i class="fas fa-heart" style="color: {{$data['is_favorited'] ? "red" : "gray"}}" ></i></a>
         </div>
     </div>
 </div>
