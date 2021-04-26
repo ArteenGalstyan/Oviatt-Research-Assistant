@@ -59,7 +59,11 @@ class SearchHistory extends Model
     ];
 
     public static function get_user_history($user_id) {
-        return DB::table(self::TABLE_NAME)->where('user_id', $user_id)->get()->toArray();
+        return DB::table(self::TABLE_NAME)->where('user_id', $user_id)
+            ->limit(15)
+            ->orderBy('DATE', 'DESC')
+            ->get()
+            ->toArray();
     }
 
     public static function delete_query_history($id) {

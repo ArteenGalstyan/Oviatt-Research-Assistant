@@ -1,6 +1,10 @@
 <script src="{{asset('js/api.js')}}"></script>
 <script>
     function favoriteArticle(articleId, userId) {
+        if (userId == -1) {
+            alert('Please log in to favorite articles')
+            return;
+        }
         post('/article/favorite',
             {
                 'id': articleId,
@@ -34,7 +38,7 @@
             </div>
             <a href="{{$data['source']}}" class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide" style="">{{$data['source_title']}}</a>
             <br>
-            <a style="cursor: pointer" onclick="favoriteArticle({{$data['id']}}, {{Auth::user()->id}})"><i class="fas fa-heart" style="color: {{$data['is_favorited'] ? "red" : "gray"}}" ></i></a>
+            <a style="cursor: pointer" onclick="favoriteArticle({{$data['id']}}, {{Auth::user() ? Auth::user()->id : '-1'}})"><i class="fas fa-heart" style="color: {{$data['is_favorited'] ? "red" : "gray"}}" ></i></a>
         </div>
     </div>
 </div>
