@@ -20,6 +20,8 @@
                 <p><b>ISBN</b>: {{str_replace('\n', ', ', $data['isbn'])}}</p>
             </div>
             <a href="{{$data['source']}}" class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide" style="">{{$data['source_title']}}</a>
+            <br>
+            <i class="fas fa-heart" style="color: {{$data['is_favorited'] ? "red" : "gray"}}"></i>
         </div>
     </div>
 </div>

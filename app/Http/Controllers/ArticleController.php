@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\FavoriteArticles;
 use App\WebUtils;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
@@ -34,6 +35,22 @@ class ArticleController extends Controller {
         ]);
     }
 
+
+    public function favorite_article() {
+        if (!Request::has('id') || !Request::has('user_id')) {
+            return $this->api_response('Failed to favorite article. Missing parameters', 400);
+        }
+        if (FavoriteArticles::favorite_article(
+            Request::get('id'),
+            Request::get('user_id')
+        )) {
+            return $this->api_response('Successfully favorited article', 200);
+        }
+        else {
+            return $this->api_response('Failed to favorite article. Internal error', 500);
+        }
+    }
+
     private function article_exists($id) {
         /**
          * Eventually will need to implement this against a dataset. For now, since the dataset
@@ -61,6 +78,7 @@ class ArticleController extends Controller {
             'year' => $result->PUB_YEAR,
             'issn' => $result->ISSN,
             'isbn' => $result->ISBN,
+            'is_favorited' => FavoriteArticles::is_favorited($id, Auth::user() ? Auth::user()->id : 0)
         ];
     }
 
@@ -76,4 +94,5 @@ class ArticleController extends Controller {
             ->get();
         return $suggested->toArray();
     }
+
 }
