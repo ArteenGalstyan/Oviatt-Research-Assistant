@@ -26,7 +26,13 @@
     <h1 class="logo">
         <a style="padding: 0;" href="/"><img id="csun-icon-header" src="{{asset('img/csun-icon.png')}}"></a>
     </h1>
-    <i id="ham-menu" class="fas fa-bars"></i>
+    <i id="ham-menu" class="fas fa-bars" style="cursor: pointer;" onclick="mobileMenuOpen()"></i>
+    <ul id="gmDropdown" class="dropdown-content">
+        <li><a class="ham-menu-item" href="#home">Home</a></li>
+        <li><a class="ham-menu-item" href="#home">Profile</a></li>
+        <li><a class="ham-menu-item" href="#home">Search History</a></li>
+        <li><a class="ham-menu-item" href="#home">Logout</a></li>
+    </ul>
     <ul class="main-nav">
     </ul>
 </div >

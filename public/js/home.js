@@ -70,3 +70,7 @@ tsParticles.load("particles", {
     },
     retina_detect: true
 });
+
+function mobileMenuOpen() {
+    document.getElementById("gmDropdown").classList.toggle("show");
+}
