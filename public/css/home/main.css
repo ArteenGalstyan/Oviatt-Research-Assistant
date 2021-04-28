@@ -24,12 +24,24 @@ img {
 }
 
 .wrapper {
+    /*
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
+    */
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    z-index: -9999;
 }
 
 .container {
