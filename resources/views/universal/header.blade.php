@@ -26,7 +26,21 @@
     <h1 class="logo">
         <a style="padding: 0;" href="/"><img id="csun-icon-header" src="{{asset('img/csun-icon.png')}}"></a>
     </h1>
-    <i id="ham-menu" class="fas fa-bars"></i>
+    <i id="ham-menu" class="fas fa-bars" style="cursor: pointer;" onclick="mobileMenuOpen()"></i>
+    <ul id="gmDropdown" class="dropdown-content">
+        <li><a class="ham-menu-item" href="/">Home</a></li>
+        @if (Auth::user())
+            <li><a class="ham-menu-item" href="/profile">Profile</a></li>
+            <li><a class="ham-menu-item" href="/history">Search History</a></li>
+            <li><a class="ham-menu-item" href="/logout">Logout</a></li>
+        @else
+            <li><a class="ham-menu-item" href="/login">Login</a></li>
+        @endif
+        @if (Auth::user() && Auth::user()->admin)
+            <li><a class="ham-menu-item" href="/admin">Admin</a></li>
+        @endif
+
+    </ul>
     <ul class="main-nav">
     </ul>
 </div >
