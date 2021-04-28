@@ -1,3 +1,20 @@
+<script src="{{asset('js/api.js')}}"></script>
+<script>
+    function favoriteArticle(articleId, userId) {
+        if (userId == -1) {
+            alert('Please log in to favorite articles')
+            return;
+        }
+        post('/article/favorite',
+            {
+                'id': articleId,
+                'user_id': userId
+            },
+            (res) => {alert(JSON.parse(res).reason); window.location.reload()},
+            (res) => {alert(JSON.parse(res).reason); window.location.reload()}
+        );
+    }
+</script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
 <div class="flex flex-wrap" style="margin: 65px">
@@ -20,6 +37,8 @@
                 <p><b>ISBN</b>: {{str_replace('\n', ', ', $data['isbn'])}}</p>
             </div>
             <a href="{{$data['source']}}" class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide" style="">{{$data['source_title']}}</a>
+            <br>
+            <a style="cursor: pointer" onclick="favoriteArticle({{$data['id']}}, {{Auth::user() ? Auth::user()->id : '-1'}})"><i class="fas fa-heart" style="color: {{$data['is_favorited'] ? "red" : "gray"}}" ></i></a>
         </div>
     </div>
 </div>

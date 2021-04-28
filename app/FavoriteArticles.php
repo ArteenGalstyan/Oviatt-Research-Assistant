@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use Log;
 
-class SearchHistory extends Model
+class FavoriteArticles extends Model
 {
     /**
      * Model for the `users` table in the Database. Most functions here should be
@@ -16,7 +16,7 @@ class SearchHistory extends Model
 
 
     use Notifiable;
-    const TABLE_NAME = 'search_history';
+    const TABLE_NAME = 'favorite_articles';
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +24,7 @@ class SearchHistory extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'query', 'user_id', 'date'
+        'id', 'article_id', 'user_id', 'date'
     ];
 
     /**
@@ -58,33 +58,39 @@ class SearchHistory extends Model
         'date' => 'datetime',
     ];
 
-    public static function get_user_history($user_id) {
-        return DB::table(self::TABLE_NAME)->where('user_id', $user_id)
-            ->limit(15)
-            ->orderBy('DATE', 'DESC')
-            ->get()
-            ->toArray();
+    public static function get_user_favorites($user_id)
+    {
+        return DB::table(self::TABLE_NAME)->where('user_id', $user_id)->get()->toArray();
     }
 
-    public static function delete_query_history($id) {
-        return DB::table(self::TABLE_NAME)->where('id', $id)->delete();
-    }
-
-    public static function record_user_search($query, $user_id) {
+    public static function favorite_article($article_id, $user_id)
+    {
+        if (self::is_favorited($article_id, $user_id)) {
+            return true;
+        }
         return DB::table(self::TABLE_NAME)->insert([
-            'query' => $query,
+            'article_id' => $article_id,
             'user_id' => $user_id,
             'date' => date('Y-m-d H:i:s')
         ]);
     }
 
-    public static function get_trending_searches() {
-        return DB::table(self::TABLE_NAME)->where(
-            'date',
-            '>=',
-            date('Y-m-d H:i:s', strtotime('-1 week'))
-        )->get();
+    public static function unfavorite_article($article_id, $user_id) {
+        if (!self::is_favorited($article_id, $user_id)) {
+            return true;
+        }
+        return DB::table(self::TABLE_NAME)
+            ->where('article_id', $article_id)
+            ->where('user_id', $user_id)
+            ->delete();
     }
 
-
+    public static function is_favorited($article_id, $user_id)
+    {
+        return DB::table(self::TABLE_NAME)
+            ->where('article_id', $article_id)
+            ->where('user_id', $user_id)
+            ->exists();
+    }
 }
+
