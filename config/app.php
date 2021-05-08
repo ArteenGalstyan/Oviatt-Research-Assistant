@@ -195,10 +195,12 @@ return [
         /* Custom Controllers */
         'AdminController' => \App\Http\Controllers\AdminController::class,
         'ArticleController' => \App\Http\Controllers\ArticleController::class,
+        'CitationController' => \App\Http\Controllers\CitationController::class,
         'LoginController' => \App\Http\Controllers\LoginController::class,
         'RegistrationController' => \App\Http\Controllers\RegistrationController::class,
         'HomeController' => \App\Http\Controllers\HomeController::class,
         'HistoryController' => \App\Http\Controllers\HistoryController::class,
+        'FavoritesController' => \App\Http\Controllers\FavoritesController::class,
         'UserController' => \App\Http\Controllers\UserController::class,
         'SearchController' => \App\Http\Controllers\SearchController::class,
 

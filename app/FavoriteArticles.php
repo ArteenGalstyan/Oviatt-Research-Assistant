@@ -65,7 +65,7 @@ class FavoriteArticles extends Model
 
     public static function get_user_favorites_full($user_id) {
         return DB::select(
-            DB::raw('SELECT fa.article_id, od.title, od.publisher 
+            DB::raw('SELECT *
                      FROM data.favorite_articles AS fa JOIN data.oa_data AS od 
                      ON fa.article_id = od.id WHERE fa.user_id = '.$user_id.';'
             )
