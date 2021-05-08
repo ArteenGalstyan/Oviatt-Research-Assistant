@@ -29,6 +29,7 @@ Route::get('/profile', 'UserController@profile_blade');
 Route::get('/search', 'SearchController@search');
 Route::get('/article', 'ArticleController@get_article');
 Route::get('/history', 'HistoryController@history_blade');
+Route::get('/favorites', 'FavoritesController@favorites_blade');
 
 
 /* General POST Routes */
