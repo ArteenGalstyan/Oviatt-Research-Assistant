@@ -4,6 +4,7 @@
     @if (Auth::user())
         <a href="/profile"  class="footer-icons">Profile</a>
         <a href="/history"  class="footer-icons">Search History</a>
+        <a href="/favorites"  class="footer-icons">Favorites</a>
         <a href="/logout"  class="footer-icons">Logout</a>
     @else
         <a href="/login"  class="footer-icons">Login</a>

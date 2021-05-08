@@ -32,6 +32,7 @@
         @if (Auth::user())
             <li><a class="ham-menu-item" href="/profile">Profile</a></li>
             <li><a class="ham-menu-item" href="/history">Search History</a></li>
+            <li><a class="ham-menu-item" href="/favorites">Favorites</a></li>
             <li><a class="ham-menu-item" href="/logout">Logout</a></li>
         @else
             <li><a class="ham-menu-item" href="/login">Login</a></li>
