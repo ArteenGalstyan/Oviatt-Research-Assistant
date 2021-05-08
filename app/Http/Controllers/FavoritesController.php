@@ -16,7 +16,7 @@ class FavoritesController extends Controller {
         $favorites_data = FavoriteArticles::get_user_favorites_full(Auth::user()->id);
         return view('favorites.layout', [
             'favorites' => $favorites_data,
-            'citation' => CitationController::generate_citation_from_favorites(Auth::user()->id, $favorites_data)
+            'citation' => CitationController::generate_citation_from_favorites($favorites_data)
         ]);
     }
 
