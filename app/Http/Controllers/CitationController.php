@@ -15,7 +15,8 @@ class CitationController extends Controller
     public static function generate_citation_from_favorites($favorites_data)
     {
         $out = "";
-        krsort($favorites_data, SORT_STRING);
+        $title = array_column($favorites_data, 'TITLE');
+        array_multisort($title, SORT_ASC, $favorites_data);
         foreach ($favorites_data as $favorite) {
             $out .= "
 \"$favorite->TITLE\"
