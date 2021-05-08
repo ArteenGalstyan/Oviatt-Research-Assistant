@@ -23,7 +23,7 @@
                         <tr data-seq="1">
                             <td class="td_row_text">{{$favorite->title}}</td>
                             <td class="td_row_text">{{$favorite->publisher}}</td>
-                            <td class="text-center"><i onclick="delete_history({{$favorite->article_id}})" class="fas fa-trash remove_row"></i></td>
+                            <td class="text-center"><i onclick="unfavoriteArticle({{$favorite->article_id}})" class="fas fa-trash remove_row"></i></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -41,7 +41,7 @@
 <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
 <script src="{{asset('js/api.js')}}"></script>
 <script>
-    function delete_history(id) {
-        post('/search/delete', {'id': id}, () => {alert('Success'); window.location.reload()}, () => {alert('Failed'); window.location.reload()})
+    function unfavoriteArticle(id) {
+        post('/article/favorite', {'id': id, 'user_id': '{{Auth::user()->id}}',}, () => {alert('Successfuly unfavorited article'); window.location.reload()}, () => {alert('Failed'); window.location.reload()})
     }
 </script>
