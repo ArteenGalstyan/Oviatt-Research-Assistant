@@ -63,6 +63,15 @@ class FavoriteArticles extends Model
         return DB::table(self::TABLE_NAME)->where('user_id', $user_id)->get()->toArray();
     }
 
+    public static function get_user_favorites_full($user_id) {
+        return DB::select(
+            DB::raw('SELECT fa.article_id, od.title, od.publisher 
+                     FROM data.favorite_articles AS fa JOIN data.oa_data AS od 
+                     ON fa.article_id = od.id WHERE fa.user_id = '.$user_id.';'
+            )
+        );
+    }
+
     public static function favorite_article($article_id, $user_id)
     {
         if (self::is_favorited($article_id, $user_id)) {

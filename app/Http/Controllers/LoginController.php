@@ -33,7 +33,7 @@ class LoginController extends Controller {
 
             return $this->api_response('Login successful', 200);
         }
-        Log::debug("Failed login");
+        Log::debug("Failed login with username");
         return $this->api_response('Login failed. Invalid username or password', 400);
     }
 
