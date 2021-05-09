@@ -38,7 +38,7 @@ class AdminController extends Controller {
         if (!WebUtils::is_local()) {
             $hosts = [
                 'prod'   => ['/var/www' . self::LOG_PATH, null],
-                'dev'    => ['/home/dev' . self::LOG_PATH, null],
+                'dev'    => ['/var/www' . self::LOG_PATH, null],
                 'nick'   => ['/home/nick' . self::LOG_PATH, null],
                 'arteen' => ['/home/arteen' . self::LOG_PATH, null],
                 'tyler'  => ['/home/tyler' . self::LOG_PATH, null]
