@@ -21,13 +21,23 @@
                     <tbody>
                     @foreach ($favorites as $favorite)
                         <tr data-seq="1">
-                            <td class="td_row_text">{{$favorite->title}}</td>
-                            <td class="td_row_text">{{$favorite->publisher}}</td>
+                            <td class="td_row_text"><a href="article?id={{$favorite->article_id}}">{{$favorite->TITLE}}</a></td>
+                            <td class="td_row_text">{{$favorite->PUBLISHER}}</td>
                             <td class="text-center"><i onclick="unfavoriteArticle({{$favorite->article_id}})" class="fas fa-trash remove_row"></i></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <pre>
+                {!! $citation !!}
+                </pre>
             </div>
         </div>
     </div>
