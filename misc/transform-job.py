@@ -3,9 +3,10 @@ import boto3
 import io
 import sagemaker
 import pandas as pd
-
+from datetime import date
 
 def main():
+    session = boto3.session.Session()
     s3_client = boto3.client('s3')
     
     # bucket containing preprocessed-batch input
@@ -16,7 +17,7 @@ def main():
     key1 = 'processed/batch-' + str(date.today()) + '/'
     
     # output folder
-    key2 = 'infrences'
+    key2 = 'infrences-test'
     
     # enumerated input data
     file_prefix = 'part-'
@@ -52,7 +53,7 @@ def main():
         transform_job.transform(data = 's3://{}/{}'.format(bucket, path), 
                                 content_type = 'text/csv', 
                                 split_type = 'Line',
-                               input_filter="$[1:]",
+                               input_filter="$[22:]",
                                 join_source= "Input",
                                 output_filter="$")
     
